@@ -1,110 +1,108 @@
-<section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><strong>RAPEX Top 10</strong></h3>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title"><strong>RAPEX Top 10</strong></h3>
+            </div>
+            <div class="box-body">
+
+                <div class="col-md-5ths text-center">
+                    <div class="box box-primary box-solid">
+                        <div class="box-body">
+                            {{'category' | translate}}
+                            <div class="chart-responsive">
+                                <canvas id="pie" class="chart chart-pie" chart-data="dataCategory" chart-labels="labelsCategory" chart-colors="colors" chart-options="options" chart-click="onClickCategory">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="box-body">
 
-                    <div class="col-md-5ths text-center">
-                        <div class="box box-primary box-solid">
-                            <div class="box-body">
-                                {{'category' | translate}}
-                                <div class="chart-responsive">
-                                    <canvas id="pie" class="chart chart-pie" chart-data="dataCategory" chart-labels="labelsCategory" chart-colors="colors" chart-options="options" chart-click="onClickCategory">
-                                    </canvas>
-                                </div>
+                <div class="col-md-5ths text-center">
+                    <div class="box box-primary box-solid">
+                        <div class="box-body">
+                            {{'notifying_country' | translate}}
+                            <div class="chart-responsive">
+                                <canvas id="pie" class="chart chart-pie" chart-data="dataNotifyingCountry" chart-labels="labelsNotifyingCountry" chart-colors="colors" chart-options="options" chart-click="onClickCountry">
+                                </canvas>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-5ths text-center">
-                        <div class="box box-primary box-solid">
-                            <div class="box-body">
-                                {{'notifying_country' | translate}}
-                                <div class="chart-responsive">
-                                    <canvas id="pie" class="chart chart-pie" chart-data="dataNotifyingCountry" chart-labels="labelsNotifyingCountry" chart-colors="colors" chart-options="options" chart-click="onClickCountry">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5ths text-center">
-                        <div class="box box-primary box-solid">
-                            <div class="box-body">
-                                {{'oecd_portal_category' | translate}}
-                                <div class="chart-responsive">
-                                    <canvas id="pie" class="chart chart-pie" chart-data="dataOecd" chart-labels="labelsOecd" chart-colors="colors" chart-options="options" chart-click="onClickOecd">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5ths text-center">
-                        <div class="box box-primary box-solid">
-                            <div class="box-body">
-                                {{'origin_country' | translate}}
-                                <div class="chart-responsive">
-                                    <canvas id="pie" class="chart chart-pie" chart-data="dataOriginCountry" chart-labels="labelsOriginCountry" chart-colors="colors" chart-options="options" chart-click="onClickOrigin">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5ths text-center">
-                        <div class="box box-primary box-solid">
-                            <div class="box-body">
-                                {{'product_type' | translate}}
-                                <div class="chart-responsive">
-                                    <canvas id="pie" class="chart chart-pie" chart-data="dataProductType" chart-labels="labelsProductType" chart-colors="colors" chart-options="options" chart-click="onClickTypeR">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5ths text-center">
-                        <div class="box box-primary box-solid">
-                            <div class="box-body">
-                                {{'products_found' | translate}}
-                                <div class="chart-responsive">
-                                    <canvas id="pie" class="chart chart-pie" chart-data="dataProductsFound" chart-labels="labelsProductsFound" chart-colors="colors" chart-options="options" chart-click="onClickFound">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5ths text-center">
-                        <div class="box box-primary box-solid">
-                            <div class="box-body">
-                                {{'risk_level' | translate}}
-                                <div class="chart-responsive">
-                                    <canvas id="pie" class="chart chart-pie" chart-data="dataRiskLevel" chart-labels="labelsRiskLevel" chart-colors="colors" chart-options="options" chart-click="onClickRiskLevel">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5ths text-center">
-                        <div class="box box-primary box-solid">
-                            <div class="box-body">
-                                {{'risk_type' | translate}}
-                                <div class="chart-responsive">
-                                    <canvas id="pie" class="chart chart-pie" chart-data="dataRiskType" chart-labels="labelsRiskType" chart-colors="colors" chart-options="options" chart-click="onClickRiskType">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
+                <div class="col-md-5ths text-center">
+                    <div class="box box-primary box-solid">
+                        <div class="box-body">
+                            {{'oecd_portal_category' | translate}}
+                            <div class="chart-responsive">
+                                <canvas id="pie" class="chart chart-pie" chart-data="dataOecd" chart-labels="labelsOecd" chart-colors="colors" chart-options="options" chart-click="onClickOecd">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5ths text-center">
+                    <div class="box box-primary box-solid">
+                        <div class="box-body">
+                            {{'origin_country' | translate}}
+                            <div class="chart-responsive">
+                                <canvas id="pie" class="chart chart-pie" chart-data="dataOriginCountry" chart-labels="labelsOriginCountry" chart-colors="colors" chart-options="options" chart-click="onClickOrigin">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5ths text-center">
+                    <div class="box box-primary box-solid">
+                        <div class="box-body">
+                            {{'product_type' | translate}}
+                            <div class="chart-responsive">
+                                <canvas id="pie" class="chart chart-pie" chart-data="dataProductType" chart-labels="labelsProductType" chart-colors="colors" chart-options="options" chart-click="onClickTypeR">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5ths text-center">
+                    <div class="box box-primary box-solid">
+                        <div class="box-body">
+                            {{'products_found' | translate}}
+                            <div class="chart-responsive">
+                                <canvas id="pie" class="chart chart-pie" chart-data="dataProductsFound" chart-labels="labelsProductsFound" chart-colors="colors" chart-options="options" chart-click="onClickFound">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5ths text-center">
+                    <div class="box box-primary box-solid">
+                        <div class="box-body">
+                            {{'risk_level' | translate}}
+                            <div class="chart-responsive">
+                                <canvas id="pie" class="chart chart-pie" chart-data="dataRiskLevel" chart-labels="labelsRiskLevel" chart-colors="colors" chart-options="options" chart-click="onClickRiskLevel">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5ths text-center">
+                    <div class="box box-primary box-solid">
+                        <div class="box-body">
+                            {{'risk_type' | translate}}
+                            <div class="chart-responsive">
+                                <canvas id="pie" class="chart chart-pie" chart-data="dataRiskType" chart-labels="labelsRiskType" chart-colors="colors" chart-options="options" chart-click="onClickRiskType">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-</section>
+</div>
