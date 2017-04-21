@@ -1,0 +1,619 @@
+<section class="sidebar" ng-controller="SidebarController">
+    <ul class="sidebar-menu">
+        <li class="header">{{'navigation' | translate}}</li>
+
+        <!-- Home -->
+        <li ng-class="{ active: isActive('/home')}"><a href="#!/home" class="sidebar-item"><i class="fa fa-home"></i> <span>{{'home' | translate}}</span></a></li>
+
+        <!-- Incidents -->
+        <li class="treeview">
+            <a href="" class="sidebar-item">
+                <i class="fa fa-exclamation-triangle"></i> <span>Incidents</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-class="{ active: isActive('/incidents/nite')}"><a href="#!/incidents/nite/records" class="sidebar-item"><i class="fa fa-circle-o"></i> NITE</a></li>
+                <li ng-class="{ active: isActive('/incidents/rapex')}"><a href="#!/incidents/rapex" class="sidebar-item"><i class="fa fa-circle-o"></i> RAPEX</a></li>
+                <li ng-class="{ active: isActive('/incidents/cpsc')}"><a href="#!/incidents/cpsc" class="sidebar-item"><i class="fa fa-circle-o"></i> CPSC</a></li>
+                <li ng-class="{ active: isActive('/incidents/dpax')}"><a href="#!/incidents/dpax" class="sidebar-item"><i class="fa fa-circle-o"></i> DPAX</a></li>
+            </ul>
+        </li>
+
+        <!-- Recalls -->
+        <li class="treeview">
+            <a href="" class="sidebar-item">
+                <i class="fa fa-repeat"></i> <span>Recalls</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-class="{ active: isActive('/recalls/nite')}"><a href="#!/recalls/nite" class="sidebar-item"><i class="fa fa-circle-o"></i> NITE</a></li>
+                <li ng-class="{ active: isActive('/recalls/rapex')}"><a href="#!/recalls/rapex/records" class="sidebar-item"><i class="fa fa-circle-o"></i> RAPEX</a></li>
+                <li ng-class="{ active: isActive('/recalls/cpsc')}"><a href="#!/recalls/cpsc" class="sidebar-item"><i class="fa fa-circle-o"></i> CPSC</a></li>
+                <li ng-class="{ active: isActive('/recalls/dpax')}"><a href="#!/recalls/dpax" class="sidebar-item"><i class="fa fa-circle-o"></i> DPAX</a></li>
+            </ul>
+        </li>
+
+        <!-- Analysis -->
+        <li class="treeview">
+            <a href="" class="sidebar-item">
+                <i class="fa fa-line-chart"></i> <span>{{'analysis' | translate}}</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-class="{ active: isActive('/analysis/social')}"><a href="#!/analysis/social" class="sidebar-item"><i class="fa fa-connectdevelop"></i> {{'social_analysis' | translate}}</a></li>
+                <li ng-class="{ active: isActive('/analysis/iidf')}"><a href="#!/analysis/iidf" class="sidebar-item"><i class="fa fa-tasks"></i> {{'iidf_analysis' | translate}}</a></li>
+            </ul>
+        </li>
+
+        <!-- Settings -->
+        <li ng-class="{ active: isActive('/settings')}"><a href="#!/settings" class="sidebar-item"><i class="fa fa-cogs"></i> <span>{{'settings' | translate}}</span></a></li>
+
+        <li class="header" ng-show="isActive('/incidents/nite/records') || isActive('/recalls/rapex/records')">{{'filters' | translate}}</li>
+
+        <!--
+        |---------------------------------------------------------|
+        | NITE Filter                                             |
+        |---------------------------------------------------------|
+        -->
+
+        <!-- Host -->
+        <li ng-show="isActive('/incidents/nite/records')" class="treeview">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'host' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'age' | translate}}
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                    <ul class="treeview-menu">
+
+                        <li ng-repeat="(key, value) in niteAge track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.niteAgeChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'gender' | translate}}
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                    <ul class="treeview-menu">
+
+                        <li ng-repeat="(key, value) in niteGender track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.niteGenderChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'region' | translate}}
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                    <ul class="treeview-menu">
+
+                        <li ng-repeat="(key, value) in niteRegion track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.niteRegionChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+
+        <!-- Vector -->
+        <li class="treeview" ng-show="isActive('/incidents/nite/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> <span>{{'vector' | translate}}</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'product_name' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+
+                        <li ng-repeat="(key, value) in niteProductName track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.niteProductNameChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'product_model' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+
+                        <li ng-repeat="(key, value) in niteProductModel track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.niteProductModelChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'product_manufacturer' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteProductManufacturer track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.niteProductManufacturerChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+
+        <!-- Agent  -->
+        <li class="treeview" ng-show="isActive('/incidents/nite/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> <span>{{'agent' | translate}}</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'hazard' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteHazard track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.niteHazardChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'incident_cause_code' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteCauseCode track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.niteCauseCodeChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'mechanism' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteMechanism track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.niteMechanismChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'fire_involvement' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteFireInvolvement track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.niteFireInvolvementChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+
+        <!-- Environment -->
+        <li class="treeview" ng-show="isActive('/incidents/nite/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> <span>{{'environment' | translate}}</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'place_of_occurence' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in nitePlace track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.nitePlaceChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'activity' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteActivity track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.niteActivityChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'weather' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteWeather track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.niteWeatherChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+
+        <!-- Consequences -->
+        <li class="treeview" ng-show="isActive('/incidents/nite/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> <span>{{'consequences' | translate}}</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'damage_type' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteDamageType track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.niteDamageTypeChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'body_part_injured' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteInjuredPart track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.niteInjuredPartChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'type_of_injury' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteInjuryType track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" value="" ng-model="niteFilterFactory.niteInjuryTypeChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'prevention' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in nitePrevention track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.nitePreventionChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+        
+        <!-- Other -->
+        <li class="treeview" ng-show="isActive('/incidents/nite/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> <span>{{'other' | translate}}</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+
+                <li>
+                    <a href=""><i class="fa fa-circle-o"></i> {{'material' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="(key, value) in niteMaterial track by $index">
+                            <div class="checkbox checkbox-sidebar">
+                                <label>
+                                    <input type="checkbox" ng-model="niteFilterFactory.niteMaterialChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="niteChecked()">{{key}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </li>
+
+        <!--
+        |---------------------------------------------------------|
+        | Rapex Filter                                            |
+        |---------------------------------------------------------|
+        -->
+
+        <!-- Category -->
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'category' | translate}}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-repeat="(key, value) in rapexCategory track by $index">
+                    <div class="checkbox checkbox-sidebar">
+                        <label>
+                            <input type="checkbox" ng-model="rapexFilterFactory.rapexCategoryChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="rapexChecked()">{{key}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Notifying Country -->
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'notifying_country' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-repeat="(key, value) in rapexNotifyingCountry track by $index">
+                    <div class="checkbox checkbox-sidebar">
+                        <label>
+                            <input type="checkbox" ng-model="rapexFilterFactory.rapexNotifyingCountryChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="rapexChecked()">{{key}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- OECD Portal Category -->
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'oecd_portal_category' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-repeat="(key, value) in rapexOecd track by $index">
+                    <div class="checkbox checkbox-sidebar">
+                        <label>
+                            <input type="checkbox" ng-model="rapexFilterFactory.rapexOecdChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="rapexChecked()">{{key}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Country of origin -->
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'origin_country' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-repeat="(key, value) in rapexOriginCountry track by $index">
+                    <div class="checkbox checkbox-sidebar">
+                        <label>
+                            <input type="checkbox" ng-model="rapexFilterFactory.rapexOriginCountryChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="rapexChecked()">{{key}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Product Type -->
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'product_type' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-repeat="(key, value) in rapexProductType track by $index">
+                    <div class="checkbox checkbox-sidebar">
+                        <label>
+                            <input type="checkbox" ng-model="rapexFilterFactory.rapexProductTypeChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="rapexChecked()">{{key}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Products were found -->
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'products_found' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-repeat="(key, value) in rapexProductsFound track by $index">
+                    <div class="checkbox checkbox-sidebar">
+                        <label>
+                            <input type="checkbox" ng-model="rapexFilterFactory.rapexProductsFoundChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="rapexChecked()">{{key}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Risk Level -->
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'risk_level' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-repeat="(key, value) in rapexRiskLevel track by $index">
+                    <div class="checkbox checkbox-sidebar">
+                        <label>
+                            <input type="checkbox" ng-model="rapexFilterFactory.rapexRiskLevelChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="rapexChecked()">{{key}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Risk Type -->
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'risk_type' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ng-repeat="(key, value) in rapexRiskType track by $index">
+                    <div class="checkbox checkbox-sidebar">
+                        <label>
+                            <input type="checkbox" ng-model="rapexFilterFactory.rapexRiskTypeChecked[$index]" ng-true-value="'{{key}}'" ng-false-value=null ng-click="rapexChecked()">{{key}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</section>
+<!-- /.sidebar -->

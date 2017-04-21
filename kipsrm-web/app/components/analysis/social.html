@@ -1,0 +1,44 @@
+<!-- Content Header (Page header) -->
+
+<section class="content-header">
+    <h1><i class="fa fa-search"></i> Gather data from Twitter</h1>
+</section>
+
+
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            <form id="social-analysis" ng-submit="">
+                <div class="input-group input-group-lg">
+                    <input type="text" ng-model="keyword" class="form-control">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-flat btn-primary"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+            
+            <br>
+
+            <div>
+                <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/search?q=Note%207" data-widget-id="830950261505953793">
+                    <br>Loading...</a>
+                <script>
+                    ! function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                            p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + "://platform.twitter.com/widgets.js";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, "script", "twitter-wjs");
+                </script>
+            </div>
+
+        </div>
+    </div>
+</section>

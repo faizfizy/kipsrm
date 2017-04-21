@@ -1,0 +1,169 @@
+<section class="content">
+    <!-- Records -->
+    <div class="row">
+        <div class="col-md-12">
+            
+            <a href="#!/incidents/nite/records" class="btn btn-bitbucket btn-social-icon" title="Records"><i class="fa fa-list"></i></a>
+            <a href="#!/incidents/nite/charts" class="btn btn-primary btn-social-icon" title="Charts"><i class="fa fa-pie-chart"></i></a>
+            <a href="#!/incidents/nite/gis" class="btn btn-primary btn-social-icon" title="GIS"><i class="fa fa-map-marker"></i></a>
+            
+            <p></p>
+
+            <div class="box box-solid box-primary">
+                <div class="box-solid">
+
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                        {{ searchFactory.keyword === "" ? (nite.stats.hits == 43556 ?  "Records for NITE Incidents" : "Showing filtered results" ) : "Showing results for"}}
+                        <strong>{{ searchFactory.keyword === "" ? "": searchFactory.keyword}}</strong>
+                    </h3>
+
+                        <div class="text-muted">
+                            {{ page === 1 ? "" : "Page " + page + " of "}} <b>{{ nite.stats.hits }}</b> {{'results' | translate}} ({{ nite.stats.tookMillis/100 }} seconds)
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="box-header with-border">
+                        <div class="row">
+
+                            <!-- Set number of entries per page-->
+                            <div class="col-md-3">
+                                Show
+                                <select ng-model="itemsPerPage" ng-options="item for item in perPage" ng-change="setItemsPerPage(itemsPerPage)">
+                                </select>
+                                results
+                            </div>
+
+                            <!-- Pagination-->
+                            <div class="col-md-9">
+                                <div class="pull-right" uib-pagination total-items="nite.stats.hits" items-per-page="itemsPerPage" max-size="5" rotate="true" force-ellipses="true" boundary-link-numbers="true" ng-model="page" ng-change="changePage({{itemsPerPage}})" template-url="kipsrm-web/app/components/incidents/pagination.html"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{'annual_number' | translate}}</th>
+                                    <th>{{'incident_date' | translate}}</th>
+                                    <th>{{'incident_cause' | translate}}</th>
+                                    <th>{{'prevention' | translate}}</th>
+                                    <th>IIDF</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in nite.data">
+                                    <td>
+                                        <a href="" data-toggle="modal" data-target="#niteModal" ng-click="displayDetailsNite(item.annual_number)">{{item.annual_number}}
+                                        </a>
+                                    </td>
+                                    <td>{{item.incident_date | date:'medium'}}</td>
+                                    <td>({{item.incident_cause_code}}) - {{item.incident_cause}}</td>
+                                    <td>{{item.prevention}}</td>
+                                    <td><span class="text-muted"><i>IIDF</i></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div class="modal fade" id="niteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Incident Details</h4>
+                </div>
+                <div class="modal-body">
+
+                    <dl class="dl-horizontal" ng-repeat="item in details.data">
+                        <dt>{{'annual_number' | translate}}</dt>
+                        <dd>{{item.annual_number}}</dd>
+
+                        <br>
+
+                        <dt>{{'damage_type' | translate}}</dt>
+                        <dd ng-repeat="type in item.damage_type">{{type}}</dd>
+
+                        <br>
+
+                        <dt>{{'incident_cause_code' | translate}}</dt>
+                        <dd>{{item.incident_cause_code}}</dd>
+
+                        <dt>{{'incident_cause' | translate}}</dt>
+                        <dd>{{item.incident_cause}}</dd>
+
+                        <br>
+
+                        <dt>{{'incident_date' | translate}}</dt>
+                        <dd>{{item.incident_date | date:'medium'}}</dd>
+
+                        <br>
+
+                        <dt>{{'incident_details' | translate}}</dt>
+                        <dd>{{item.incident_details}}</dd>
+
+                        <br>
+
+                        <dt>{{'incident_payment_date' | translate}}</dt>
+                        <dd>{{item.incident_payment_date}}</dd>
+
+                        <br>
+
+                        <dt>{{'informed_party' | translate}}</dt>
+                        <dd>{{item.informed_party}}</dd>
+
+                        <br>
+
+                        <dt>{{'item_classification_code' | translate}}</dt>
+                        <dd>{{item.item_classification_code}}</dd>
+
+                        <dt>{{'item_classification' | translate}}</dt>
+                        <dd>{{item.item_classification}}</dd>
+
+                        <br>
+
+                        <dt>{{'prevention' | translate}}</dt>
+                        <dd>{{item.prevention}}</dd>
+
+                        <br>
+
+                        <dt>{{'product_manufacturer' | translate}}</dt>
+                        <dd>{{item.product_manufacturer}}</dd>
+
+                        <br>
+
+                        <dt>{{'product_model' | translate}}</dt>
+                        <dd>{{item.product_model}}</dd>
+
+                        <br>
+
+                        <dt>{{'product_name' | translate}}</dt>
+                        <dd>{{item.product_name}}</dd>
+
+                        <br>
+
+                        <dt>{{'product_usage_duration' | translate}}</dt>
+                        <dd>{{item.product_usage_duration}}</dd>
+                        <dd>{{item.timesUsed || 0}} {{'times' | translate}}</dd>
+                        <dd>{{item.daysUsed || 0}} {{'days' | translate}}</dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>

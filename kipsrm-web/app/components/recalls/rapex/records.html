@@ -1,0 +1,209 @@
+<section class="content">
+    <!-- Records -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <a href="#!/recalls/rapex/records" class="btn btn-bitbucket btn-social-icon" title="Records"><i class="fa fa-list"></i></a>
+            <a href="#!/recalls/rapex/charts" class="btn btn-primary btn-social-icon" title="Charts"><i class="fa fa-pie-chart"></i></a>
+<!--            <a href="#!/recalls/rapex/gis" class="btn btn-primary btn-social-icon" title="GIS"><i class="fa fa-map-marker"></i></a>-->
+            <a href="#!/recalls/rapex/wordcloud" class="btn btn-primary btn-social-icon" title="Word Cloud"><i class="fa fa-cloud"></i></a>
+
+            <p></p>
+
+            <div class="box box-solid box-primary">
+                <div class="box-solid">
+
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                        {{ searchFactory.keyword === "" ? (rapex.stats.hits == 19683 ?  "RAPEX Recalls" : "Showing filtered results" ) : "Showing results for"}}
+                        <strong>{{ searchFactory.keyword === "" ? "": searchFactory.keyword}}</strong>
+                        </h3>
+
+                        <div class="text-muted">
+                            {{ page === 1 ? "" : "Page " + page + " of "}} <b>{{ rapex.stats.hits }}</b> results ({{ rapex.stats.tookMillis/100 }} seconds)
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="box-header with-border">
+                        <div class="row">
+
+                            <!-- Set number of entries per page-->
+                            <div class="col-md-3">
+                                Show
+                                <select ng-model="itemsPerPage" ng-options="item for item in perPage" ng-change="setItemsPerPage(itemsPerPage)">
+                                </select>
+                                results
+                            </div>
+
+                            <!-- Pagination-->
+                            <div class="col-md-9">
+                                <div class="pull-right" uib-pagination total-items="rapex.stats.hits" items-per-page="itemsPerPage" max-size="5" rotate="true" force-ellipses="true" boundary-link-numbers="true" ng-model="page" ng-change="changePage({{itemsPerPage}})" template-url="kipsrm-web/app/components/incidents/pagination.html"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Reference No.</th>
+                                    <th>{{'risk_type' | translate}} &amp; {{'risk_level' | translate}}</th>
+                                    <th>{{'category' | translate}}</th>
+                                    <th>{{'origin_country' | translate}}</th>
+                                    <th>{{'notifying_country' | translate}}</th>
+                                    <th>IIDF</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in rapex.data">
+                                    <td>
+                                        <a href="" data-toggle="modal" data-target="#rapexModal" ng-click="displayDetailsRapex(item.refnr)">
+                                        {{item.refnr}}
+                                    </a>
+                                    </td>
+                                    <td><span ng-repeat="type in item.risk_type">{{type}}{{$last ? '' : ', '}}</span> - {{item.risk_level}}</td>
+                                    <td>{{item.category}}</td>
+                                    <td>{{item.origin_country}}</td>
+                                    <td>{{item.notifying_country}}</td>
+                                    <td><span class="text-muted"><i>IIDF</i></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div class="modal fade" id="rapexModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Recalls Details</h4>
+                </div>
+                <div class="modal-body">
+
+                    <dl class="dl-horizontal" ng-repeat="item in details.data">
+
+                        <dt>{{'legends' | translate}}</dt>
+                        <dd>
+                            <span style="background:yellow;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> - Chemical
+                        </dd>
+                        <dd>
+                            <span style="background:greenyellow;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> - EU Standard
+                        </dd>
+
+                        <br>
+
+                        <dt>{{'id' | translate}}</dt>
+                        <dd>{{item.id}}</dd>
+
+                        <br>
+
+                        <dt>{{'ref_nr' | translate}}</dt>
+                        <dd>{{item.refnr}}</dd>
+
+                        <br>
+
+                        <dt>{{'risk_level' | translate}}</dt>
+                        <dd>{{item.risk_level}}</dd>
+
+                        <br>
+
+                        <dt>{{'product_type' | translate}}</dt>
+                        <dd>{{item.product_type}}</dd>
+
+                        <br>
+
+                        <dt>{{'notifying_country' | translate}}</dt>
+                        <dd>{{item.notifying_country}}</dd>
+
+                        <br>
+
+                        <dt>{{'origin_country' | translate}}</dt>
+                        <dd>{{item.origin_country}}</dd>
+
+                        <br>
+
+                        <dt>{{'counterfeit' | translate}}</dt>
+                        <dd>{{item.counterfeit}}</dd>
+
+                        <br>
+
+                        <dt>{{'risk_type' | translate}}</dt>
+                        <dd><span ng-repeat="type in item.risk_type">{{type}}{{$last ? '' : ', '}}</span></dd>
+
+                        <br>
+
+                        <dt>{{'product' | translate}}</dt>
+                        <dd>{{item.product}}</dd>
+
+                        <br>
+
+                        <dt>{{'product_name' | translate}}</dt>
+                        <dd>{{item.product_name}}</dd>
+
+                        <br>
+
+                        <dt>{{'product_description' | translate}}</dt>
+                        <dd>{{item.product_desc}}</dd>
+
+                        <br>
+
+                        <dt>{{'brand' | translate}}</dt>
+                        <dd>{{item.brand}}</dd>
+
+                        <br>
+
+                        <dt>{{'category' | translate}}</dt>
+                        <dd>{{item.category}}</dd>
+
+                        <br>
+
+                        <dt>{{'type_model' | translate}}</dt>
+                        <dd>{{item.type_model}}</dd>
+
+                        <br>
+
+                        <dt>{{'batch_barcode' | translate}}</dt>
+                        <dd>{{item.batch_barcode}}</dd>
+
+                        <br>
+
+                        <dt>{{'oecd_portal_category' | translate}}</dt>
+                        <dd>{{item.oecd_por_cat}}</dd>
+
+                        <br>
+
+                        <dt>{{'risk_description' | translate}}</dt>
+                        <dd>
+                            <highlight text="item.risk_desc" search="item.ner"></highlight>
+                        </dd>
+
+                        <br>
+
+                        <dt>{{'measures' | translate}}</dt>
+                        <dd>{{item.measures}}</dd>
+
+                        <br>
+
+                        <dt>{{'products_found' | translate}}</dt>
+                        <dd><span ng-repeat="product in item.products_found">{{product}}{{$last ? '' : ', '}}</span></dd>
+
+                    </dl>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">{{'close' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

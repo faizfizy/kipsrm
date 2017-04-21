@@ -1,0 +1,53 @@
+<section class="content">
+    
+    <!--
+    <div class="row">
+        
+        <div class="col-lg-3 col-xs-6">
+            <a class="info-box bg-green" href="#!/records/nite">
+                <span class="info-box-icon">NITE</span>
+
+                <div class="info-box-content">
+                    <span class="info-box-number">{{nite.stats.hits | number : fractionSize}}</span>
+                </div>
+            </a>
+        </div>
+        
+        
+        <div class="col-lg-3 col-xs-6">
+            <a class="info-box bg-green" href="#!/records/rapex">
+                <span class="info-box-icon">RAPEX</span>
+
+                <div class="info-box-content">
+                    <span class="info-box-number">{{rapex.stats.hits | number : fractionSize}}</span>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-lg-3 col-xs-6">
+            <a class="info-box bg-green" href="#!/records/cpsc">
+                <span class="info-box-icon">CPSC</span>
+
+                <div class="info-box-content">
+                    <span class="info-box-number">0</span>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-lg-3 col-xs-6">
+            <a class="info-box bg-green" href="#!/records/dpax">
+                <span class="info-box-icon">DPAX</span>
+
+                <div class="info-box-content">
+                    <span class="info-box-number">0</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    -->
+
+    <div ng-include="'kipsrm-web/app/components/charts/nite.html'" ng-controller="ChartsController"></div>
+
+    <div ng-include="'kipsrm-web/app/components/charts/rapex.html'" ng-controller="ChartsController"></div>
+    
+</section>

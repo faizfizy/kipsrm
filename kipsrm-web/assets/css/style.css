@@ -1,0 +1,147 @@
+/* Long sidebar item */
+
+.sidebar-menu,
+.main-sidebar .user-panel,
+.sidebar-menu > li.header {
+    white-space: normal!important;
+}
+
+.pagination {
+    margin: 0 0 0 0 !important;
+}
+
+@font-face {
+    font-family: FatFrank;
+    src: url("../fonts/FatFrank-Free.otf") format("opentype");
+}
+
+.main-header .logo {
+    font-family: "FatFrank";
+    font-size: 40px;
+    color: #2eb4c7 !important;
+    line-height: 16px;
+    padding-top: 23px;
+}
+
+.logo-title {
+    font-size: 12px;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #2eb4c7;
+    font-weight: bold;
+}
+
+.navbar-logo {
+    height: 55px;
+    margin: 10px 5px 10px 0;
+}
+
+.navbar-search {
+    margin: 12.5px 0 12.5px 0;
+}
+
+.navbar-fat {
+    height: 50px;
+}
+
+.i-fat {
+    margin: 0 5px 0 5px;
+}
+
+.navbar-custom-menu .navbar-nav > li > a {
+    padding-top: 17.5px;
+    padding-bottom: 17.5px;
+    margin: 10px 5px 0px 0;
+}
+
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    margin-right: 5px;
+    right: 0;
+}
+
+.navbar-nav > .notifications-menu > .dropdown-menu {
+    width: 0;
+    min-width: 114.94px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+@media (max-width: 991px) {
+    .navbar-custom-menu > .navbar-nav > li {
+        position: relative;
+    }
+}
+
+
+/*
+.sidebar-menu li.header {
+    color: #b8c7ce !important;
+    background: #222d32 !important;
+    border-bottom: 1px solid;
+    font-size: 20px;
+    margin: 0 6px 0 6px;
+}
+*/
+
+.skin-blue .sidebar-menu>li.header {
+    color: #222d32;
+    background: #b8c7ce;
+    line-height: 2.2;
+    font-size: 102%;
+}
+
+.sidebar-item {
+    font-size: 16px !important;
+}
+
+.checkbox-sidebar {
+    color: #b8c7ce;
+    margin: 1px 0 1px 16px;
+}
+
+/* Highlights */
+.chemical {
+    background-color: yellow;
+}
+
+.euStandard {
+    background-color: greenyellow;
+}
+
+.translate {
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.info-box {
+    min-height: 60px;
+}
+
+.info-box-icon {
+    font-size: 30px;
+    height: 60px;
+    width: 100px;
+    line-height: 60px;
+}
+
+.info-box-content {
+    margin-left: 100px;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.info-box-number {
+    font-size: 30px;
+    line-height: 60px;
+}
+
+.btn-blue {
+    color: #fff;
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+}
+
+.labelClass{
+  white-space:nowrap;
+  text-shadow: 0 0 0.1em black, 0 0 0.1em black,
+        0 0 0.1em black,0 0 0.1em black,0 0 0.1em;
+  color: yellow
+}

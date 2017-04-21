@@ -1,0 +1,383 @@
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-database"></i> Data Source</h3>
+                </div>
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="5"><i class="fa fa-exclamation-triangle"></i> Incidents</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        NITE
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="http://www.jiko.nite.go.jp/php/jiko/search/index.php">
+                                        <br>
+                                        <input type="text" class="form-control" value="http://www.jikojoho.go.jp/ai_national/">
+                                    </td>
+                                    <td><span class="label label-success">Running</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger "><i class="fa fa-stop"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        RAPEX
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="http://ec.europa.eu/consumers/consumers_safety/safety_products/rapex/alerts/repository/content/pages/rapex/index_en.htm">
+                                    </td>
+                                    <td><span class="label label-success">Running</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger "><i class="fa fa-stop"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        CPSC
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="https://www.cpsc.gov/cgibin/NEISSQuery/home.aspx">
+                                    </td>
+                                    <td><span class="label label-default">Idle</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger "><i class="fa fa-stop"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        DPAX
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="http://www.dpac.gov.cn/qxxxcj/xfzshbg/index.jsp">
+                                    </td>
+                                    <td><span class="label label-danger">Stopped</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary "><i class="fa fa-play"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table no-margin table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="5"><i class="fa fa-repeat"></i> Recalls</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        NITE
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="http://www.nite.go.jp/jiko/jikojohou/recall_new/2016/index.html">
+                                    </td>
+                                    <td><span class="label label-success">Running</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger "><i class="fa fa-stop"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        RAPEX
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="http://ec.europa.eu/consumers/consumers_safety/safety_products/rapex/alerts/main/?event=main.listNotifications">
+                                    </td>
+                                    <td><span class="label label-success">Running</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger "><i class="fa fa-stop"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        CPSC
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="https://www.cpsc.gov/Recalls">
+                                    </td>
+                                    <td><span class="label label-default">Idle</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger "><i class="fa fa-stop"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        DPAX
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="http://www.dpac.gov.cn/qczh/">
+                                        <br>
+                                        <input type="text" class="form-control" value="http://www.dpac.gov.cn/xfpzh/">
+                                    </td>
+                                    <td><span class="label label-danger">Stopped</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary "><i class="fa fa-play"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-list"></i> Display</h3>
+                </div>
+                <div class="box-body">
+                    <p>Check on attributes to be displayed.</p>
+
+                    <form ng-submit="">
+
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+
+                                <div class="col-md-2 text-center">
+                                    <h1><i class="fa fa-database"></i> NITE</h1>
+                                    <p>(Japanese National Institute of Technology and Evaluation)</p>
+                                </div>
+
+                                <form>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Host</label>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.ageMenu"> Age
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.genderMenu"> Gender
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.raceEthnicityMenu"> Race and ethnicity
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.residenceMenu"> Residence
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.cognitivePhysicalMenu"> Cognitive/physical ability
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Vector</label>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.productsCausingMenu"> Products causing injury
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.productInvolvedMenu"> Product involved
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.productTypeMenu"> Type or model of product
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.productManufacturerMenu"> Manufacturer of product
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.durationMenu"> Duration of use of product
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Agent</label>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.hazardMenu"> Hazard
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.causeInjuryMenu"> Cause of injury
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.mechanismInjuryMenu"> Mechanism of injury
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.fireInvolvementMenu"> Fire involvement
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.overviewMenu"> Overview of accident
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Environment</label>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.dateMenu"> Date of injury
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.timeMenu"> Time of injury
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.placeMenu"> Place of occurence
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.activityMenu"> Activity
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.weatherMenu"> Weather
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.naturalDisasterMenu"> Natural disaster involvement
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Consequences</label>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.severityPersonMenu"> Severity (person)
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.severityObjectMenu"> Severity (object)
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.bodyPartMenu"> Body part injured
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.typeInjuryMenu"> Type of injury
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.treatmentMenu"> Treatment
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.numberInjuredMenu"> Number of injured persons
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="settingsFactory.filter.riskMitigationMenu"> Risk-mitigation
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    -->
+
+</section>

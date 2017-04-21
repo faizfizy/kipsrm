@@ -1,0 +1,259 @@
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Top 10</strong></h3>
+                </div>
+                <div class="box-body">
+                    
+                    <div class="col-md-12 text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                <strong>Number of NITE Incidents: 2006 - 2015</strong>
+                                <br><br>                                
+                                <div class="chart-responsive">
+                                    <canvas id="line" class="chart chart-line" chart-data="dataDate" chart-labels="labelsDate" height="70">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'age' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="bar" class="chart chart-bar" chart-data="dataAge" chart-labels="labelsAge" chart-colors="colors" chart-options="options" chart-click="onClickAge">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'region' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="bar" class="chart chart-bar" chart-data="dataRegion" chart-labels="labelsRegion" chart-colors="colors" chart-options="options" chart-click="onClickRegion">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="col-md-6 text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                Year
+                                <div class="chart-responsive">
+                                    <canvas id="bar" class="chart chart-bar" chart-data="dataDate" chart-labels="labelsDate" chart-colors="colors" chart-options="options" chart-click="onClickRegion">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'gender' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataGender" chart-labels="labelsGender" chart-colors="colors" chart-options="options" chart-click="onClickGender">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                Region
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataRegion" chart-labels="labelsRegion" chart-colors="colors" chart-options="options" chart-click="onClickGender">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'product_name' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataProductName" chart-labels="labelsProductName" chart-colors="colors" chart-options="options" chart-click="onClickName">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'product_model' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataProductModel" chart-labels="labelsProductModel" chart-colors="colors" chart-options="options" chart-click="onClickModel">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'product_manufacturer' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataProductManufacturer" chart-labels="labelsProductManufacturer" chart-colors="colors" chart-options="options" chart-click="onClickManufacturer">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'hazard' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataHazard" chart-labels="labelsHazard" chart-colors="colors" chart-options="options" chart-click="onClickHazard">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'incident_cause_code' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataCauseCode" chart-labels="labelsCauseCode" chart-colors="colors" chart-options="options" chart-click="onClickCause">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'mechanism' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataMechanism" chart-labels="labelsMechanism" chart-colors="colors" chart-options="options" chart-click="onClickMechanism">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'fire_involvement' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas id="pie" class="chart chart-pie" chart-data="dataFireInvolvement" chart-labels="labelsFireInvolvement" chart-colors="colors" chart-options="options" chart-click="onClickFire">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'place_of_occurence' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas class="chart chart-pie" chart-data="dataPlace" chart-labels="labelsPlace" chart-colors="colors" chart-options="options" chart-click="onClickOccurence">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'activity' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas class="chart chart-pie" chart-data="dataActivity" chart-labels="labelsActivity" chart-colors="colors" chart-options="options" chart-click="onClickActivity">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'weather' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas class="chart chart-pie" chart-data="dataWeather" chart-labels="labelsWeather" chart-colors="colors" chart-options="options" chart-click="onClickWeather">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'damage_type' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas class="chart chart-pie" chart-data="dataDamageType" chart-labels="labelsDamageType" chart-colors="colors" chart-options="options" chart-click="onClickDamage">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'body_part_injured' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas class="chart chart-pie" chart-data="dataInjuredPart" chart-labels="labelsInjuredPart" chart-colors="colors" chart-options="options" chart-click="onClickPart">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'type_of_injury' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas class="chart chart-pie" chart-data="dataInjuryType" chart-labels="labelsInjuryType" chart-colors="colors" chart-options="options" chart-click="onClickInjury">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5ths text-center">
+                        <div class="box box-primary box-solid">
+                            <div class="box-body">
+                                {{'material' | translate}}
+                                <div class="chart-responsive">
+                                    <canvas class="chart chart-pie" chart-data="dataNiteMaterial" chart-labels="labelsNiteMaterial" chart-colors="colors" chart-options="options" chart-click="onClickInjury">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

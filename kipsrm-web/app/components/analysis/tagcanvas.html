@@ -1,0 +1,38 @@
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 class="page-header">Chemical</h2>
+
+            <div>
+                <canvas width="800" height="600" id="chemicalCanvas" tag-canvas canvas-id="chemical" outline-colour="#ff00ff" text-font="Arial" text-colour="#ff00ff" reverse="true" depth="0.8" max-speed="0.05" weight-mode="both" weight="true" style="border:1px solid #000000;">
+                </canvas>
+            </div>
+
+            <div id="chemical" style="font-size: 50%;" ng-show="hide">
+                <a ng-repeat="word in chemicalWordList" href="{{word.href}}" style="font-size: {{word.fontSize}}">{{word.text}}</a>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+
+        <div class="col-md-12 text-center">
+            <h2 class="page-header">Eu Standard</h2>
+
+            <div>
+                <canvas width="800" height="600" id="euStandardCanvas" tag-canvas canvas-id="euStandard" outline-colour="#ff00ff" text-font="Arial" text-colour="#ff00ff" reverse="true" depth="0.8" max-speed="0.05" weight-mode="both" weight="true" style="border:1px solid #000000;">
+                </canvas>
+            </div>
+
+            <div id="euStandard" style="font-size: 50%;" ng-show="hide">
+                <a ng-repeat="word in euStandardWordList" href="{{word.href}}" style="font-size: {{word.fontSize}}">{{word.text}}</a>
+            </div>
+
+        </div>
+    </div>
+
+</section>

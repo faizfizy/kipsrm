@@ -1,0 +1,78 @@
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <a href="#!/recalls/rapex/records" class="btn btn-primary btn-social-icon" title="Records"><i class="fa fa-list"></i></a>
+            <a href="#!/recalls/rapex/charts" class="btn btn-primary btn-social-icon" title="Charts"><i class="fa fa-pie-chart"></i></a>
+<!--            <a href="#!/recalls/rapex/gis" class="btn btn-primary btn-social-icon" title="GIS"><i class="fa fa-map-marker"></i></a>-->
+            <a href="#!/recalls/rapex/wordcloud" class="btn btn-bitbucket btn-social-icon" title="Word Cloud"><i class="fa fa-cloud"></i></a>
+
+            <p></p>
+        </div>
+    </div>
+
+    <!--
+    <a ng-class="showCloud=='chemical' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showCloud='chemical'">Chemical</a>
+    <a ng-class="showCloud=='euStandard' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showCloud='euStandard'">EU Standard</a>
+
+    <p></p>
+    -->
+
+    <div class="row" ng-show="showCloud=='chemical'">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <!--
+                <div class="box-header">
+                    <h3 class="box-title">Chemical</h3>
+                </div>
+-->
+                <div class="box-body text-center">
+
+                    <a ng-class="showCloud=='chemical' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showCloud='chemical'">Chemical</a>
+                    <a ng-class="showCloud=='euStandard' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showCloud='euStandard'">EU Standard</a>
+
+                    <p></p>
+
+                    <div>
+                        <canvas width="800" height="600" id="chemicalCanvas" tag-canvas canvas-id="chemical" outline-colour="#ff00ff" text-font="Arial" text-colour="#ff00ff" reverse="true" depth="0.8" max-speed="0.05" weight-mode="both" weight="true" style="border:1px solid #000000;">
+                        </canvas>
+                    </div>
+
+                    <div id="chemical" style="font-size: 50%;" ng-show="hide">
+                        <a ng-repeat="word in chemicalWordList" href="{{word.href}}" style="font-size: {{word.fontSize}}">{{word.text}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-show="showCloud=='euStandard'">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <!--
+                <div class="box-header">
+                    <h3 class="box-title">EU Standard</h3>
+                </div>
+-->
+                <div class="box-body text-center">
+                    
+                    <a ng-class="showCloud=='chemical' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showCloud='chemical'">Chemical</a>
+                    <a ng-class="showCloud=='euStandard' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showCloud='euStandard'">EU Standard</a>
+
+                    <p></p>
+                    
+                    <div>
+                        <canvas width="800" height="600" id="euStandardCanvas" tag-canvas canvas-id="euStandard" outline-colour="#ff00ff" text-font="Arial" text-colour="#ff00ff" reverse="true" depth="0.8" max-speed="0.05" weight-mode="both" weight="true" style="border:1px solid #000000;">
+                        </canvas>
+                    </div>
+
+                    <div id="euStandard" style="font-size: 50%;" ng-show="hide">
+                        <a ng-repeat="word in euStandardWordList" href="{{word.href}}" style="font-size: {{word.fontSize}}">{{word.text}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
