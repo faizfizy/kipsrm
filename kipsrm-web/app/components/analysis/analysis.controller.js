@@ -3,82 +3,412 @@ var app = angular.module('analysisControllers', ['uiGmapgoogle-maps', 'dataFacto
 
 app.controller('SocialController', ['$scope', '$timeout', function ($scope, $timeout) {
     'use strict';
-    
+
     $timeout = twttr.widgets.load();
-    
+
 }]);
 
-app.controller('IidfController', ['$scope', function ($scope) {
+app.controller('IidfController', ['$scope', 'DataFactory', function ($scope, DataFactory) {
     'use strict';
     
-    Highcharts.chart('container', {
+    DataFactory.getIidfHm().then(function (response) {
 
-        chart: {
-            type: 'heatmap',
-            marginTop: 40,
-            marginBottom: 40
-        },
+        var data = response.data.iidfData,
+            xAxisTitle = response.data.xAxisLabel,
+            xAxisCategories = response.data.xAxisCat,
+            yAxisTitle = response.data.yAxisLabel,
+            yAxisCategories = response.data.yAxisCat;
 
+        Highcharts.chart('iidfHm', {
 
-        title: {
-            text: 'IIDF Analysis'
-        },
-
-        xAxis: {
-            title: {
-                text: 'Incident Cause Code'
+            chart: {
+                type: 'heatmap',
+                marginTop: 40,
+                marginBottom: 50
             },
-            categories: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']
-        },
 
-        yAxis: {
-            categories: ['H1M1', 'H1M2', 'H1M3', 'H1M4', 'H1M5'],
+
             title: {
-                text: 'Hazard + Mechanism'
+                text: 'Hazard vs Motion'
             },
-        },
 
-        credits: {
-            enabled: false
-        },
+            xAxis: {
+                title: {
+                    text: xAxisTitle
+                },
+                categories: xAxisCategories
+            },
 
-        colorAxis: {
-            min: 0,
-            minColor: '#FFFFFF',
-            maxColor: Highcharts.getOptions().colors[0]
-        },
+            yAxis: {
+                categories: yAxisCategories,
+                title: {
+                    text: yAxisTitle
+                },
+            },
 
-        legend: {
-            align: 'right',
-            layout: 'vertical',
-            margin: 0,
-            verticalAlign: 'top',
-            y: 25,
-            symbolHeight: 320
-        },
+            credits: {
+                enabled: false
+            },
 
-        tooltip: {
-            formatter: function () {
-                return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> cause code <br><b>' +
-                    this.point.value + '</b> incidents <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
-            }
-        },
+            colorAxis: {
+                min: 0,
+                minColor: '#FFFFFF',
+                maxColor: Highcharts.getOptions().colors[0]
+            },
 
-        series: [{
-            name: 'Incidents per cause',
-            borderWidth: 1,
-            data: [[0, 0, 10], [0, 1, 19], [0, 2, 8], [0, 3, 24], [0, 4, 67], [1, 0, 92], [1, 1, 58], [1, 2, 78], [1, 3, 117], [1, 4, 48], [2, 0, 35], [2, 1, 15], [2, 2, 123], [2, 3, 64], [2, 4, 52], [3, 0, 72], [3, 1, 132], [3, 2, 114], [3, 3, 19], [3, 4, 16], [4, 0, 38], [4, 1, 5], [4, 2, 8], [4, 3, 117], [4, 4, 115], [5, 0, 88], [5, 1, 32], [5, 2, 12], [5, 3, 6], [5, 4, 120], [6, 0, 13], [6, 1, 44], [6, 2, 88], [6, 3, 98], [6, 4, 96], [7, 0, 31], [7, 1, 1], [7, 2, 82], [7, 3, 32], [7, 4, 30], [8, 0, 85], [8, 1, 97], [8, 2, 123], [8, 3, 64], [8, 4, 84], [9, 0, 47], [9, 1, 114], [9, 2, 31], [9, 3, 48], [9, 4, 91]],
-            dataLabels: {
-                enabled: true,
-                color: 'black',
-                style: {
-                    textShadow: 'none'
+            legend: {
+                align: 'right',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y: 25,
+                symbolHeight: 320
+            },
+
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> cause code <br><b>' +
+                        this.point.value + '</b> incidents <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
                 }
-            }
+            },
+
+            series: [{
+                name: 'Incidents per cause',
+                borderWidth: 1,
+                data: data,
+                dataLabels: {
+                    enabled: true,
+                    color: 'black',
+                    style: {
+                        textShadow: 'none'
+                    }
+                }
         }]
+
+        });
 
     });
     
+    DataFactory.getIidfHo().then(function (response) {
+
+        console.log(response.data);
+
+        var data = response.data.iidfData,
+            xAxisTitle = response.data.xAxisLabel,
+            xAxisCategories = response.data.xAxisCat,
+            yAxisTitle = response.data.yAxisLabel,
+            yAxisCategories = response.data.yAxisCat;
+
+        Highcharts.chart('iidfHo', {
+
+            chart: {
+                type: 'heatmap',
+                marginTop: 40,
+                marginBottom: 50
+            },
+
+
+            title: {
+                text: 'Hazard vs Object'
+            },
+
+            xAxis: {
+                title: {
+                    text: xAxisTitle
+                },
+                categories: xAxisCategories
+            },
+
+            yAxis: {
+                categories: yAxisCategories,
+                title: {
+                    text: yAxisTitle
+                },
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            colorAxis: {
+                min: 0,
+                minColor: '#FFFFFF',
+                maxColor: Highcharts.getOptions().colors[0]
+            },
+
+            legend: {
+                align: 'right',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y: 25,
+                symbolHeight: 320
+            },
+
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> cause code <br><b>' +
+                        this.point.value + '</b> incidents <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+                }
+            },
+
+            series: [{
+                name: 'Incidents per cause',
+                borderWidth: 1,
+                data: data,
+                dataLabels: {
+                    enabled: true,
+                    color: 'black',
+                    style: {
+                        textShadow: 'none'
+                    }
+                }
+        }]
+
+        });
+
+    });
+    
+    DataFactory.getIidfHmat().then(function (response) {
+
+        console.log(response.data);
+
+        var data = response.data.iidfData,
+            xAxisTitle = response.data.xAxisLabel,
+            xAxisCategories = response.data.xAxisCat,
+            yAxisTitle = response.data.yAxisLabel,
+            yAxisCategories = response.data.yAxisCat;
+
+        Highcharts.chart('iidfHmat', {
+
+            chart: {
+                type: 'heatmap',
+                marginTop: 40,
+                marginBottom: 50
+            },
+
+
+            title: {
+                text: 'Hazard vs Material'
+            },
+
+            xAxis: {
+                title: {
+                    text: xAxisTitle
+                },
+                categories: xAxisCategories
+            },
+
+            yAxis: {
+                categories: yAxisCategories,
+                title: {
+                    text: yAxisTitle
+                },
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            colorAxis: {
+                min: 0,
+                minColor: '#FFFFFF',
+                maxColor: Highcharts.getOptions().colors[0]
+            },
+
+            legend: {
+                align: 'right',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y: 25,
+                symbolHeight: 320
+            },
+
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> cause code <br><b>' +
+                        this.point.value + '</b> incidents <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+                }
+            },
+
+            series: [{
+                name: 'Incidents per cause',
+                borderWidth: 1,
+                data: data,
+                dataLabels: {
+                    enabled: true,
+                    color: 'black',
+                    style: {
+                        textShadow: 'none'
+                    }
+                }
+        }]
+
+        });
+
+    });
+    
+    DataFactory.getIidfHmec().then(function (response) {
+
+        console.log(response.data);
+
+        var data = response.data.iidfData,
+            xAxisTitle = response.data.xAxisLabel,
+            xAxisCategories = response.data.xAxisCat,
+            yAxisTitle = response.data.yAxisLabel,
+            yAxisCategories = response.data.yAxisCat;
+
+        Highcharts.chart('iidfHmec', {
+
+            chart: {
+                type: 'heatmap',
+                marginTop: 40,
+                marginBottom: 50
+            },
+
+
+            title: {
+                text: 'Hazard vs Mechanism'
+            },
+
+            xAxis: {
+                title: {
+                    text: xAxisTitle
+                },
+                categories: xAxisCategories
+            },
+
+            yAxis: {
+                categories: yAxisCategories,
+                title: {
+                    text: yAxisTitle
+                },
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            colorAxis: {
+                min: 0,
+                minColor: '#FFFFFF',
+                maxColor: Highcharts.getOptions().colors[0]
+            },
+
+            legend: {
+                align: 'right',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y: 25,
+                symbolHeight: 320
+            },
+
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> cause code <br><b>' +
+                        this.point.value + '</b> incidents <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+                }
+            },
+
+            series: [{
+                name: 'Incidents per cause',
+                borderWidth: 1,
+                data: data,
+                dataLabels: {
+                    enabled: true,
+                    color: 'black',
+                    style: {
+                        textShadow: 'none'
+                    }
+                }
+        }]
+
+        });
+
+    });
+    
+    DataFactory.getIidfHact().then(function (response) {
+
+        console.log(response.data);
+
+        var data = response.data.iidfData,
+            xAxisTitle = response.data.xAxisLabel,
+            xAxisCategories = response.data.xAxisCat,
+            yAxisTitle = response.data.yAxisLabel,
+            yAxisCategories = response.data.yAxisCat;
+
+        Highcharts.chart('iidfHact', {
+
+            chart: {
+                type: 'heatmap',
+                marginTop: 40,
+                marginBottom: 50
+            },
+
+
+            title: {
+                text: 'Hazard vs Activity'
+            },
+
+            xAxis: {
+                title: {
+                    text: xAxisTitle
+                },
+                categories: xAxisCategories
+            },
+
+            yAxis: {
+                categories: yAxisCategories,
+                title: {
+                    text: yAxisTitle
+                },
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            colorAxis: {
+                min: 0,
+                minColor: '#FFFFFF',
+                maxColor: Highcharts.getOptions().colors[0]
+            },
+
+            legend: {
+                align: 'right',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y: 25,
+                symbolHeight: 320
+            },
+
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> cause code <br><b>' +
+                        this.point.value + '</b> incidents <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+                }
+            },
+
+            series: [{
+                name: 'Incidents per cause',
+                borderWidth: 1,
+                data: data,
+                dataLabels: {
+                    enabled: true,
+                    color: 'black',
+                    style: {
+                        textShadow: 'none'
+                    }
+                }
+        }]
+
+        });
+
+    });
+
 }]);
 
 app.controller('TagcanvasController', ['$scope', 'DataFactory', function ($scope, DataFactory) {
@@ -119,7 +449,7 @@ app.controller('TagcanvasController', ['$scope', 'DataFactory', function ($scope
         }
         console.log("Chemical: " + $scope.chemicalWordList);
     });
-    
+
     DataFactory.getRapex(rapexEuStandard).then(function (response) {
         var results, result;
 
