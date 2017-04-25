@@ -1,9 +1,18 @@
 /*global angular */
-var app = angular.module('recallsRapexControllers', ['ui.bootstrap', 'dataFactories', 'searchFactories', 'filterFactories', 'highlightDirective', 'chart.js', 'tagcanvasDirective']);
+var app = angular.module('recallsRapexControllers', ['ui.bootstrap', 'dataFactories', 'searchFactories', 'filterFactories', 'highlightDirective', 'chart.js', 'tagcanvasDirective', 'angular-d3-word-cloud']);
 
-app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 'SearchFactory', 'RapexFilterFactory', function ($scope, $location, DataFactory, SearchFactory, RapexFilterFactory) {
+app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 'SearchFactory', 'RapexFilterFactory', '$timeout', function($scope, $location, DataFactory, SearchFactory, RapexFilterFactory, $timeout) {
     'use strict';
-    
+
+    //wordcloud d3
+    $scope.height = 700;
+    $scope.width = 800;
+    $scope.wordClicked = wordClicked;
+
+
+    function wordClicked(word) {
+        alert(word);
+    }
     /*
     |--------------------------------------------------------------------------
     |
@@ -41,7 +50,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         };
 
-        DataFactory.getRapex(body).then(function (response) {
+        DataFactory.getRapex(body).then(function(response) {
             $scope.rapex = response.data;
         });
     }
@@ -50,7 +59,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     getRapexData();
 
     // Change records per page
-    $scope.setItemsPerPage = function (num) {
+    $scope.setItemsPerPage = function(num) {
         $scope.itemsPerPage = num;
 
         // Reset to first page
@@ -61,7 +70,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     };
 
     // Change page
-    $scope.changePage = function (num) {
+    $scope.changePage = function(num) {
 
         $scope.itemsPerPage = num;
         from = num * ($scope.page - 1); // Calculate page
@@ -70,7 +79,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     };
 
     // Trigger search from navbar or filter
-    $scope.$on('navbarSearchRapex', function (event, args) {
+    $scope.$on('navbarSearchRapex', function(event, args) {
 
         RapexFilterFactory.resetFilter();
 
@@ -80,7 +89,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
 
         getRapexData();
     });
-    $scope.$on('filterSearchRapex', function (event, args) {
+    $scope.$on('filterSearchRapex', function(event, args) {
 
         // Reset to first page
         from = 0;
@@ -90,7 +99,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     });
 
     // Display single recall details in modal
-    $scope.displayDetailsRapex = function (id) {
+    $scope.displayDetailsRapex = function(id) {
         var body = {
             "size": "1",
             "from": "0",
@@ -121,11 +130,11 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             ]
         };
 
-        DataFactory.getRapex(body).then(function (response) {
+        DataFactory.getRapex(body).then(function(response) {
             $scope.details = response.data;
         });
     };
-    
+
     /*
     |--------------------------------------------------------------------------
     |
@@ -133,7 +142,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     |
     |--------------------------------------------------------------------------
     */
-    
+
     // Charts colour
     $scope.colors = ['#4D4D4D', '#5DA5DA', '#FAA43A', '#60BD68', '#F17CB0', '#B2912F', '#B276B2', '#DECF3F', '#F15854', '#00FF00'];
 
@@ -368,7 +377,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     */
 
     // Host
-    DataFactory.getNite(niteAge).then(function (response) {
+    DataFactory.getNite(niteAge).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -385,7 +394,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteGender).then(function (response) {
+    DataFactory.getNite(niteGender).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -402,7 +411,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteRegion).then(function (response) {
+    DataFactory.getNite(niteRegion).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -421,7 +430,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     });
 
     // Vector
-    DataFactory.getNite(niteProductName).then(function (response) {
+    DataFactory.getNite(niteProductName).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -438,7 +447,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteProductModel).then(function (response) {
+    DataFactory.getNite(niteProductModel).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -455,7 +464,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteProductManufacturer).then(function (response) {
+    DataFactory.getNite(niteProductManufacturer).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -474,7 +483,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     });
 
     // Agent
-    DataFactory.getNite(niteHazard).then(function (response) {
+    DataFactory.getNite(niteHazard).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -491,7 +500,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteCauseCode).then(function (response) {
+    DataFactory.getNite(niteCauseCode).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -508,7 +517,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteMechanism).then(function (response) {
+    DataFactory.getNite(niteMechanism).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -525,7 +534,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteFireInvolvement).then(function (response) {
+    DataFactory.getNite(niteFireInvolvement).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -544,7 +553,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     });
 
     // Environment
-    DataFactory.getNite(niteDate).then(function (response) {
+    DataFactory.getNite(niteDate).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -561,7 +570,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(nitePlace).then(function (response) {
+    DataFactory.getNite(nitePlace).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -578,7 +587,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteActivity).then(function (response) {
+    DataFactory.getNite(niteActivity).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -595,7 +604,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteWeather).then(function (response) {
+    DataFactory.getNite(niteWeather).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -614,7 +623,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     });
 
     // Consequences
-    DataFactory.getNite(niteDamageType).then(function (response) {
+    DataFactory.getNite(niteDamageType).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -631,7 +640,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteInjuredPart).then(function (response) {
+    DataFactory.getNite(niteInjuredPart).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -648,7 +657,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getNite(niteInjuryType).then(function (response) {
+    DataFactory.getNite(niteInjuryType).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -667,7 +676,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     });
 
     // Other
-    DataFactory.getNite(niteMaterial).then(function (response) {
+    DataFactory.getNite(niteMaterial).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -686,7 +695,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     });
 
     // RAPEX
-    DataFactory.getRapex(rapexCategory).then(function (response) {
+    DataFactory.getRapex(rapexCategory).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -703,7 +712,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getRapex(rapexNotifyingCountry).then(function (response) {
+    DataFactory.getRapex(rapexNotifyingCountry).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -720,7 +729,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getRapex(rapexOecd).then(function (response) {
+    DataFactory.getRapex(rapexOecd).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -737,7 +746,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getRapex(rapexOriginCountry).then(function (response) {
+    DataFactory.getRapex(rapexOriginCountry).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -754,7 +763,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getRapex(rapexProductType).then(function (response) {
+    DataFactory.getRapex(rapexProductType).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -771,7 +780,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getRapex(rapexProductsFound).then(function (response) {
+    DataFactory.getRapex(rapexProductsFound).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -788,7 +797,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getRapex(rapexRiskLevel).then(function (response) {
+    DataFactory.getRapex(rapexRiskLevel).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -805,7 +814,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    DataFactory.getRapex(rapexRiskType).then(function (response) {
+    DataFactory.getRapex(rapexRiskType).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -822,7 +831,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
             }
         }
     });
-    
+
     /*
     |--------------------------------------------------------------------------
     |
@@ -830,65 +839,118 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
     |
     |--------------------------------------------------------------------------
     */
-    
-    $scope.showCloud = 'chemical';
-    
-    var rapexChemical = {
-            "aggregations": [{
-                "field": "chemical",
-                "name": "results",
-                "type": "terms"
-            }]
-        },
-        rapexEuStandard = {
-            "aggregations": [{
-                "field": "euStandard",
-                "name": "results",
-                "type": "terms"
-            }]
-        };
 
-    DataFactory.getRapex(rapexChemical).then(function (response) {
-        var results, result;
+    $scope.showCloud = 'euStandard';
+    var render = function(min, max) {
+        console.info(min, max);
+        var rapexChemical = {
+                "aggregations": [{
+                    "size": 9999,
 
-        // Initialize empty wordList array
-        $scope.chemicalWordList = [];
+                    "field": "chemical",
+                    "name": "results",
+                    "type": "terms"
+                }]
+            },
+            rapexEuStandard = {
+                "aggregations": [{
+                    "size": 9999,
 
-        results = response.data.aggregations.results;
+                    "field": "euStandard",
+                    "name": "results",
+                    "type": "terms"
+                }]
+            };
 
-        // Convert response to worList
-        for (result in results) {
-            if (results.hasOwnProperty(result)) {
-                $scope.chemicalWordList.push({
-                    href: "",
-                    fontSize: (results[result] / 100) + "ex",
-                    text: result
-                });
+        DataFactory.getRapex(rapexChemical).then(function(response) {
+
+            var results, result;
+
+
+            // Initialize empty wordList array
+            $scope.chemicalWordList = [];
+            $scope.chemres = response.data.aggregations.results;
+            results = response.data.aggregations.results;
+            $scope.words = [];
+            // Convert response to worList
+            for (result in results) {
+                // console.info(result);
+
+                if (results.hasOwnProperty(result)) {
+                    $scope.chemicalWordList.push({
+                        href: "",
+                        fontSize: (results[result] / 100) + "ex",
+                        text: result
+                    });
+                    $scope.words.push({ text: result, size: Math.log(results[result], 2) * 10 });
+                }
             }
-        }
-        console.log("Chemical: " + $scope.chemicalWordList);
-    });
-    
-    DataFactory.getRapex(rapexEuStandard).then(function (response) {
-        var results, result;
+            $scope.words = $scope.words.slice(min, max);
 
-        // Initialize empty wordList array
-        $scope.euStandardWordList = [];
+        });
 
-        results = response.data.aggregations.results;
+        DataFactory.getRapex(rapexEuStandard).then(function(response) {
+            var results, result;
 
-        // Convert response to wordList
-        for (result in results) {
-            if (results.hasOwnProperty(result)) {
-                $scope.euStandardWordList.push({
-                    href: "",
-                    fontSize: (results[result] / 100) + "ex",
-                    text: result
-                });
+            // Initialize empty wordList array
+            $scope.euStandardWordList = [];
+            $scope.eures = response.data.aggregations.results;
+
+            results = response.data.aggregations.results;
+            // console.info(results);
+
+            $scope.words2 = [];
+
+            // Convert response to wordList
+            for (result in results) {
+                // console.info(result);
+
+                if (results.hasOwnProperty(result)) {
+                    $scope.euStandardWordList.push({
+                        href: "",
+                        fontSize: (results[result] / 100) + "ex",
+                        text: result
+                    });
+                    $scope.words2.push({ text: result, size: Math.log(results[result], 2) * 8 });
+
+                }
             }
+            $scope.words2 = $scope.words2.slice(min, max);
+
+            // console.log("EU Standard: " + $scope.euStandardWordList);
+        });
+    }
+    $scope.lastupdatedvalue = 0;
+    $scope.lastupdatedvalueMax = 20;
+    $scope.timeoutHandler = undefined;
+    $scope.myChangeListener = function() {
+
+        var neutralizeHandler = function() {
+            $timeout.cancel($scope.timeoutHandler);
+            $scope.timeoutHandler = undefined;
+
         }
-        console.log("EU Standard: " + $scope.euStandardWordList);
-    });
+        if ($scope.timeoutHandler) {
+            neutralizeHandler();
+        }
+        if (!$scope.timeoutHandler) {
+            $scope.timeoutHandler = $timeout(function() {
+                $scope.lastupdatedvalue = $scope.slider.min;
+                console.log($scope.slider.max);
+                render($scope.slider.min, $scope.slider.max);
+                neutralizeHandler();
+            }, 800);
+        }
 
-
+    };
+    var keys = [0,10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    $scope.slider = {
+        min: $scope.lastupdatedvalue,
+        max: $scope.lastupdatedvalueMax,
+        options: {
+            stepsArray: keys,
+            onChange: function() { $scope.myChangeListener() }
+        }
+    };
+    render(0, 20);
 }]);
