@@ -59,7 +59,7 @@
                                 <select class="btn btn-default navbar-fat" ng-options="option.name group by option.category for option in searchSelect.searchOptions track by option.id" ng-model="searchSelect.selectedOption"></select>
                             </div>
                             <!-- Search input text  -->
-                            <input class="form-control navbar-fat" type="text" placeholder="{{'search' | translate}}" ng-model="searchFactory.keyword">
+                            <input class="form-control navbar-fat" type="text" placeholder="{{'search' | translate}}" ng-model="searchFactory.keyword" ng-model-options="{updateOn: 'submit'}">
                             <span class="input-group-btn">
                                 <button class="btn btn-primary btn-navbar navbar-fat" type="submit"><i class="fa fa-search i-fat"></i></button>
                             </span>
