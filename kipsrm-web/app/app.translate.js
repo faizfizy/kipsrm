@@ -5,9 +5,11 @@ app.config(["$translateProvider", function ($translateProvider) {
     'use strict';
 
     var en_strings = {
-            // Sidebar 
+            // Sidebar
             "navigation": "NAVIGATION",
             "home": "Home",
+            "incidents": "Incidents",
+            "recalls": "Recalls",
             "records": "Records",
             "charts": "Charts",
             "analysis": "Analysis",
@@ -95,6 +97,8 @@ app.config(["$translateProvider", function ($translateProvider) {
             // Sidebar 
             "navigation": "导航栏",
             "home": "主页",
+            "incidents": "事件",
+            "recalls": "召回",
             "records": "记录",
             "charts": "图表",
             "analysis": "分析",
@@ -179,7 +183,9 @@ app.config(["$translateProvider", function ($translateProvider) {
         ja_strings = {
             // Sidebar 
             "navigation": "Navigation",
-            "home": "Home",
+            "home": "ホーム",
+            "incidents": "事故",
+            "recalls": "リコール",
             "records": "記録",
             "charts": "チャート",
             "analysis": "分析",
