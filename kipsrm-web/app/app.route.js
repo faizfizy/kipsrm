@@ -24,6 +24,10 @@ app.config(['$routeProvider', 'CONSTANT', function ($routeProvider, CONSTANT) {
             templateUrl: CONSTANT.ROOT + 'app/components/incidents/nite/gis.html',
             controller: 'IncidentsNiteController'
         })
+        .when('/incidents/nite/iidf', {
+            templateUrl: CONSTANT.ROOT + 'app/components/incidents/nite/iidf.html',
+            controller: 'IncidentsNiteController'
+        })
     
         .when('/incidents/rapex', {
             templateUrl: CONSTANT.ROOT + 'app/components/incidents/rapex/rapex.html',
