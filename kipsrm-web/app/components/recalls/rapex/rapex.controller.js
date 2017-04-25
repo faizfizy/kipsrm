@@ -14,7 +14,7 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
     function wordClicked(word) {
         console.log(word);
         $rootScope.$broadcast('scanner-started', { word: word });
-        $window.location.assign('http://localhost:8080/#!/recalls/rapex/records');
+        $window.location.assign('http://202.45.139.16/kipsrm-web/#!/recalls/rapex/records');
 
         // $location.url('http://localhost:8080/#!/recalls/rapex/records/' + word.text);
     }
@@ -22,7 +22,7 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
     function wordClickedChem(word) {
         console.log(word);
         $rootScope.$broadcast('chem-started', { word: word });
-        $window.location.assign('http://localhost:8080/#!/recalls/rapex/records');
+        $window.location.assign('http://202.45.139.16/kipsrm-web/#!/recalls/rapex/records');
 
         // $location.url('http://localhost:8080/#!/recalls/rapex/records/' + word.text);
     }
