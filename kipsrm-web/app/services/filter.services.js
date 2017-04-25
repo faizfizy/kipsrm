@@ -1,7 +1,7 @@
 /*global angular*/
 var app = angular.module('filterFactories', ['CONSTANTS']);
 
-app.factory('NiteFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTANT) {
+app.factory('NiteFilterFactory', ['$http', 'CONSTANT', function($http, CONSTANT) {
     "use strict";
 
     var url = CONSTANT.BASE_URL + "nite",
@@ -158,69 +158,69 @@ app.factory('NiteFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTANT
     */
 
     // Host    
-    filterFactory.getNiteAge = function () {
-        return $http.post(url, niteAge, header);
+    filterFactory.getNiteAge = function() {
+        return $http.post(url, niteAge);
     };
-    filterFactory.getNiteGender = function () {
-        return $http.post(url, niteGender, header);
+    filterFactory.getNiteGender = function() {
+        return $http.post(url, niteGender);
     };
-    filterFactory.getNiteRegion = function () {
-        return $http.post(url, niteRegion, header);
+    filterFactory.getNiteRegion = function() {
+        return $http.post(url, niteRegion);
     };
 
     // Vector
-    filterFactory.getNiteProductName = function () {
-        return $http.post(url, niteProductName, header);
+    filterFactory.getNiteProductName = function() {
+        return $http.post(url, niteProductName);
     };
-    filterFactory.getNiteProductModel = function () {
-        return $http.post(url, niteProductModel, header);
+    filterFactory.getNiteProductModel = function() {
+        return $http.post(url, niteProductModel);
     };
-    filterFactory.getNiteProductManufacturer = function () {
-        return $http.post(url, niteProductManufacturer, header);
+    filterFactory.getNiteProductManufacturer = function() {
+        return $http.post(url, niteProductManufacturer);
     };
 
     // Agent
-    filterFactory.getNiteHazard = function () {
-        return $http.post(url, niteHazard, header);
+    filterFactory.getNiteHazard = function() {
+        return $http.post(url, niteHazard);
     };
-    filterFactory.getNiteCauseCode = function () {
-        return $http.post(url, niteCauseCode, header);
+    filterFactory.getNiteCauseCode = function() {
+        return $http.post(url, niteCauseCode);
     };
-    filterFactory.getNiteMechanism = function () {
-        return $http.post(url, niteMechanism, header);
+    filterFactory.getNiteMechanism = function() {
+        return $http.post(url, niteMechanism);
     };
-    filterFactory.getNiteFireInvolvement = function () {
-        return $http.post(url, niteFireInvolvement, header);
+    filterFactory.getNiteFireInvolvement = function() {
+        return $http.post(url, niteFireInvolvement);
     };
 
     // Environment
-    filterFactory.getNitePlace = function () {
-        return $http.post(url, nitePlace, header);
+    filterFactory.getNitePlace = function() {
+        return $http.post(url, nitePlace);
     };
-    filterFactory.getNiteActivity = function () {
-        return $http.post(url, niteActivity, header);
+    filterFactory.getNiteActivity = function() {
+        return $http.post(url, niteActivity);
     };
-    filterFactory.getNiteWeather = function () {
-        return $http.post(url, niteWeather, header);
+    filterFactory.getNiteWeather = function() {
+        return $http.post(url, niteWeather);
     };
 
     // Consequences
-    filterFactory.getNiteDamageType = function () {
-        return $http.post(url, niteDamageType, header);
+    filterFactory.getNiteDamageType = function() {
+        return $http.post(url, niteDamageType);
     };
-    filterFactory.getNiteInjuredPart = function () {
-        return $http.post(url, niteInjuredPart, header);
+    filterFactory.getNiteInjuredPart = function() {
+        return $http.post(url, niteInjuredPart);
     };
-    filterFactory.getNiteInjuryType = function () {
-        return $http.post(url, niteInjuryType, header);
+    filterFactory.getNiteInjuryType = function() {
+        return $http.post(url, niteInjuryType);
     };
-    filterFactory.getNitePrevention = function () {
-        return $http.post(url, nitePrevention, header);
+    filterFactory.getNitePrevention = function() {
+        return $http.post(url, nitePrevention);
     };
 
     // Other
-    filterFactory.getNiteMaterial = function () {
-        return $http.post(url, niteMaterial, header);
+    filterFactory.getNiteMaterial = function() {
+        return $http.post(url, niteMaterial);
     };
 
     /*
@@ -260,7 +260,7 @@ app.factory('NiteFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTANT
     filterFactory.niteMaterialChecked = [];
 
     // Reset Filter
-    filterFactory.resetFilter = function () {
+    filterFactory.resetFilter = function() {
 
         // Host
         filterFactory.niteAgeChecked = [];
@@ -296,7 +296,7 @@ app.factory('NiteFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTANT
     return filterFactory;
 }]);
 
-app.factory('RapexFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTANT) {
+app.factory('RapexFilterFactory', ['$http', 'CONSTANT', function($http, CONSTANT) {
     "use strict";
 
     var url = CONSTANT.BASE_URL + "rapex",
@@ -363,7 +363,22 @@ app.factory('RapexFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTAN
                 "field": "risk_type.keyword"
             }]
         },
-
+        rapexEuStandard = {
+            "aggregations": [{
+                "name": "result",
+                "type": "terms",
+                "field": "euStandard",
+                "size": 9999
+            }]
+        },
+        rapexChem = {
+            "aggregations": [{
+                "name": "result",
+                "type": "terms",
+                "field": "chemical",
+                "size": 9999
+            }]
+        },
         filterFactory = {};
 
     /*
@@ -372,29 +387,35 @@ app.factory('RapexFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTAN
     |--------------------------------------------------------------------------
     */
 
-    filterFactory.getRapexCategory = function () {
-        return $http.post(url, rapexCategory, header);
+    filterFactory.getRapexCategory = function() {
+        return $http.post(url, rapexCategory);
     };
-    filterFactory.getRapexNotifyingCountry = function () {
-        return $http.post(url, rapexNotifyingCountry, header);
+    filterFactory.getRapexNotifyingCountry = function() {
+        return $http.post(url, rapexNotifyingCountry);
     };
-    filterFactory.getRapexOecd = function () {
-        return $http.post(url, rapexOecd, header);
+    filterFactory.getRapexOecd = function() {
+        return $http.post(url, rapexOecd);
     };
-    filterFactory.getRapexOriginCountry = function () {
-        return $http.post(url, rapexOriginCountry, header);
+    filterFactory.getRapexOriginCountry = function() {
+        return $http.post(url, rapexOriginCountry);
     };
-    filterFactory.getRapexProductType = function () {
-        return $http.post(url, rapexProductType, header);
+    filterFactory.getRapexProductType = function() {
+        return $http.post(url, rapexProductType);
     };
-    filterFactory.getRapexProductsFound = function () {
-        return $http.post(url, rapexProductsFound, header);
+    filterFactory.getRapexProductsFound = function() {
+        return $http.post(url, rapexProductsFound);
     };
-    filterFactory.getRapexRiskLevel = function () {
-        return $http.post(url, rapexRiskLevel, header);
+    filterFactory.getRapexRiskLevel = function() {
+        return $http.post(url, rapexRiskLevel);
     };
-    filterFactory.getRapexRiskType = function () {
-        return $http.post(url, rapexRiskType, header);
+    filterFactory.getRapexRiskType = function() {
+        return $http.post(url, rapexRiskType);
+    };
+    filterFactory.getEuStandard = function() {
+        return $http.post(url, rapexEuStandard);
+    };
+    filterFactory.getChem = function() {
+        return $http.post(url, rapexChem);
     };
 
     /*
@@ -411,9 +432,11 @@ app.factory('RapexFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTAN
     filterFactory.rapexProductsFoundChecked = [];
     filterFactory.rapexRiskLevelChecked = [];
     filterFactory.rapexRiskTypeChecked = [];
+    filterFactory.euStandard = [];
+    filterFactory.chem = [];
 
     // Reset Filter
-    filterFactory.resetFilter = function () {
+    filterFactory.resetFilter = function() {
         filterFactory.rapexCategoryChecked = [];
         filterFactory.rapexNotifyingCountryChecked = [];
         filterFactory.rapexOecdChecked = [];
@@ -422,6 +445,9 @@ app.factory('RapexFilterFactory', ['$http', 'CONSTANT', function ($http, CONSTAN
         filterFactory.rapexProductsFoundChecked = [];
         filterFactory.rapexRiskLevelChecked = [];
         filterFactory.rapexRiskTypeChecked = [];
+        filterFactory.euStandard = [];
+        filterFactory.chem = [];
+
     };
 
     return filterFactory;

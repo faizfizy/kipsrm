@@ -19,11 +19,11 @@ app.factory('DataFactory', ['$http', 'CONSTANT', function ($http, CONSTANT) {
         dataFactory = {};
 
     dataFactory.getNite = function (body) {
-        return $http.post(urlNite, body, header);
+        return $http.post(urlNite, body);
     };
 
     dataFactory.getRapex = function (body) {
-        return $http.post(urlRapex, body, header);
+        return $http.post(urlRapex, body);
     };
 
     // IIDF

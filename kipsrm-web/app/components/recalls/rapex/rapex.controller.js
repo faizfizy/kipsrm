@@ -1,18 +1,47 @@
 /*global angular */
 var app = angular.module('recallsRapexControllers', ['ui.bootstrap', 'dataFactories', 'searchFactories', 'filterFactories', 'highlightDirective', 'chart.js', 'tagcanvasDirective', 'angular-d3-word-cloud']);
 
-app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 'SearchFactory', 'RapexFilterFactory', '$timeout', function($scope, $location, DataFactory, SearchFactory, RapexFilterFactory, $timeout) {
+app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', 'DataFactory', 'SearchFactory', 'RapexFilterFactory', '$timeout', '$window', function($rootScope, $scope, $location, DataFactory, SearchFactory, RapexFilterFactory, $timeout, $window) {
     'use strict';
 
     //wordcloud d3
     $scope.height = 700;
     $scope.width = 800;
     $scope.wordClicked = wordClicked;
+    $scope.wordClickedChem = wordClickedChem;
 
 
     function wordClicked(word) {
-        alert(word);
+        console.log(word);
+        $rootScope.$broadcast('scanner-started', { word: word });
+        $window.location.assign('http://localhost:8080/#!/recalls/rapex/records');
+
+        // $location.url('http://localhost:8080/#!/recalls/rapex/records/' + word.text);
     }
+
+    function wordClickedChem(word) {
+        console.log(word);
+        $rootScope.$broadcast('chem-started', { word: word });
+        $window.location.assign('http://localhost:8080/#!/recalls/rapex/records');
+
+        // $location.url('http://localhost:8080/#!/recalls/rapex/records/' + word.text);
+    }
+
+    $scope.$on('scanner-started', function(event, args) {
+        console.info(args);
+        RapexFilterFactory.chem = [];
+
+        RapexFilterFactory.euStandard = args.word.text;
+        // do what you want to do
+    });
+
+    $scope.$on('chem-started', function(event, args) {
+        console.info(args);
+        RapexFilterFactory.euStandard = [];
+
+        RapexFilterFactory.chem = args.word.text;
+        // do what you want to do
+    });
     /*
     |--------------------------------------------------------------------------
     |
@@ -46,11 +75,15 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
                 "product_type": RapexFilterFactory.rapexProductTypeChecked,
                 "products_found": RapexFilterFactory.rapexProductsFoundChecked,
                 "risk_level": RapexFilterFactory.rapexRiskLevelChecked,
-                "risk_type": RapexFilterFactory.rapexRiskTypeChecked
+                "risk_type": RapexFilterFactory.rapexRiskTypeChecked,
+                "euStandard": RapexFilterFactory.euStandard,
+                "chemical": RapexFilterFactory.chem
+
             }
         };
 
         DataFactory.getRapex(body).then(function(response) {
+            console.log(response);
             $scope.rapex = response.data;
         });
     }
@@ -126,7 +159,10 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
                 "risk_desc",
                 "measures",
                 "products_found",
-                "ner"
+                "ner",
+                "chemical",
+                "euStandard"
+
             ]
         };
 
@@ -943,7 +979,7 @@ app.controller('RecallsRapexController', ['$scope', '$location', 'DataFactory', 
         }
 
     };
-    var keys = [0,10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    var keys = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
     $scope.slider = {
         min: $scope.lastupdatedvalue,
         max: $scope.lastupdatedvalueMax,

@@ -1,10 +1,8 @@
 <section class="sidebar" ng-controller="SidebarController">
     <ul class="sidebar-menu">
         <li class="header">{{'navigation' | translate}}</li>
-
         <!-- Home -->
         <li ng-class="{ active: isActive('/home')}"><a href="#!/home" class="sidebar-item"><i class="fa fa-home"></i> <span>{{'home' | translate}}</span></a></li>
-
         <!-- Incidents -->
         <li class="treeview">
             <a href="" class="sidebar-item">
@@ -20,7 +18,6 @@
                 <li ng-class="{ active: isActive('/incidents/dpax')}"><a href="#!/incidents/dpax" class="sidebar-item"><i class="fa fa-circle-o"></i> DPAX</a></li>
             </ul>
         </li>
-
         <!-- Recalls -->
         <li class="treeview">
             <a href="" class="sidebar-item">
@@ -36,7 +33,6 @@
                 <li ng-class="{ active: isActive('/recalls/dpax')}"><a href="#!/recalls/dpax" class="sidebar-item"><i class="fa fa-circle-o"></i> DPAX</a></li>
             </ul>
         </li>
-
         <!-- Analysis -->
         <li class="treeview">
             <a href="" class="sidebar-item">
@@ -52,18 +48,14 @@
                 -->
             </ul>
         </li>
-
         <!-- Settings -->
         <li ng-class="{ active: isActive('/settings')}"><a href="#!/settings" class="sidebar-item"><i class="fa fa-cogs"></i> <span>{{'settings' | translate}}</span></a></li>
-
         <li class="header" ng-show="isActive('/incidents/nite/records') || isActive('/recalls/rapex/records')">{{'filters' | translate}}</li>
-
         <!--
         |---------------------------------------------------------|
         | NITE Filter                                             |
         |---------------------------------------------------------|
         -->
-
         <!-- Host -->
         <li ng-show="isActive('/incidents/nite/records')" class="treeview">
             <a href="">
@@ -73,7 +65,6 @@
             </span>
             </a>
             <ul class="treeview-menu">
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'age' | translate}}
                     <span class="pull-right-container">
@@ -81,7 +72,6 @@
                     </span>
                 </a>
                     <ul class="treeview-menu">
-
                         <li ng-repeat="(key, value) in niteAge track by $index">
                             <div class="checkbox checkbox-sidebar">
                                 <label>
@@ -89,10 +79,8 @@
                                 </label>
                             </div>
                         </li>
-
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'gender' | translate}}
                     <span class="pull-right-container">
@@ -100,7 +88,6 @@
                     </span>
                 </a>
                     <ul class="treeview-menu">
-
                         <li ng-repeat="(key, value) in niteGender track by $index">
                             <div class="checkbox checkbox-sidebar">
                                 <label>
@@ -108,10 +95,8 @@
                                 </label>
                             </div>
                         </li>
-
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'region' | translate}}
                     <span class="pull-right-container">
@@ -119,7 +104,6 @@
                     </span>
                 </a>
                     <ul class="treeview-menu">
-
                         <li ng-repeat="(key, value) in niteRegion track by $index">
                             <div class="checkbox checkbox-sidebar">
                                 <label>
@@ -127,13 +111,10 @@
                                 </label>
                             </div>
                         </li>
-
                     </ul>
                 </li>
-
             </ul>
         </li>
-
         <!-- Vector -->
         <li class="treeview" ng-show="isActive('/incidents/nite/records')">
             <a href="">
@@ -143,7 +124,6 @@
             </span>
             </a>
             <ul class="treeview-menu">
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'product_name' | translate}}
                 <span class="pull-right-container">
@@ -151,7 +131,6 @@
                 </span>
               </a>
                     <ul class="treeview-menu">
-
                         <li ng-repeat="(key, value) in niteProductName track by $index">
                             <div class="checkbox checkbox-sidebar">
                                 <label>
@@ -159,10 +138,8 @@
                                 </label>
                             </div>
                         </li>
-
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'product_model' | translate}}
                 <span class="pull-right-container">
@@ -170,7 +147,6 @@
                 </span>
               </a>
                     <ul class="treeview-menu">
-
                         <li ng-repeat="(key, value) in niteProductModel track by $index">
                             <div class="checkbox checkbox-sidebar">
                                 <label>
@@ -178,10 +154,8 @@
                                 </label>
                             </div>
                         </li>
-
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'product_manufacturer' | translate}}
                 <span class="pull-right-container">
@@ -198,10 +172,8 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </li>
-
         <!-- Agent  -->
         <li class="treeview" ng-show="isActive('/incidents/nite/records')">
             <a href="">
@@ -211,7 +183,6 @@
             </span>
             </a>
             <ul class="treeview-menu">
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'hazard' | translate}}
                 <span class="pull-right-container">
@@ -228,7 +199,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'incident_cause_code' | translate}}
                 <span class="pull-right-container">
@@ -245,7 +215,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'mechanism' | translate}}
                 <span class="pull-right-container">
@@ -262,7 +231,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'fire_involvement' | translate}}
                 <span class="pull-right-container">
@@ -279,10 +247,8 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </li>
-
         <!-- Environment -->
         <li class="treeview" ng-show="isActive('/incidents/nite/records')">
             <a href="">
@@ -292,7 +258,6 @@
             </span>
             </a>
             <ul class="treeview-menu">
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'place_of_occurence' | translate}}
                 <span class="pull-right-container">
@@ -309,7 +274,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'activity' | translate}}
                 <span class="pull-right-container">
@@ -326,7 +290,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'weather' | translate}}
                 <span class="pull-right-container">
@@ -343,10 +306,8 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </li>
-
         <!-- Consequences -->
         <li class="treeview" ng-show="isActive('/incidents/nite/records')">
             <a href="">
@@ -356,7 +317,6 @@
             </span>
             </a>
             <ul class="treeview-menu">
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'damage_type' | translate}}
                 <span class="pull-right-container">
@@ -373,7 +333,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'body_part_injured' | translate}}
                 <span class="pull-right-container">
@@ -390,7 +349,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'type_of_injury' | translate}}
                 <span class="pull-right-container">
@@ -407,7 +365,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'prevention' | translate}}
                 <span class="pull-right-container">
@@ -424,10 +381,8 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </li>
-
         <!-- Other -->
         <li class="treeview" ng-show="isActive('/incidents/nite/records')">
             <a href="">
@@ -437,7 +392,6 @@
             </span>
             </a>
             <ul class="treeview-menu">
-
                 <li>
                     <a href=""><i class="fa fa-circle-o"></i> {{'material' | translate}}
                 <span class="pull-right-container">
@@ -454,16 +408,13 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </li>
-
         <!--
         |---------------------------------------------------------|
         | Rapex Filter                                            |
         |---------------------------------------------------------|
         -->
-
         <!-- Category -->
         <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
@@ -482,7 +433,6 @@
                 </li>
             </ul>
         </li>
-
         <!-- Notifying Country -->
         <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
@@ -501,7 +451,6 @@
                 </li>
             </ul>
         </li>
-
         <!-- OECD Portal Category -->
         <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
@@ -520,7 +469,6 @@
                 </li>
             </ul>
         </li>
-
         <!-- Country of origin -->
         <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
@@ -539,7 +487,6 @@
                 </li>
             </ul>
         </li>
-
         <!-- Product Type -->
         <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
@@ -558,7 +505,6 @@
                 </li>
             </ul>
         </li>
-
         <!-- Products were found -->
         <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
@@ -577,7 +523,6 @@
                 </li>
             </ul>
         </li>
-
         <!-- Risk Level -->
         <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
@@ -596,7 +541,6 @@
                 </li>
             </ul>
         </li>
-
         <!-- Risk Type -->
         <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
@@ -615,7 +559,36 @@
                 </li>
             </ul>
         </li>
-
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'Regulations Type' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <select class="form-control" ng-model="rapexFilterFactory.euStandard" ng-options="key as key for (key,value) in euStandard" ng-change="rapexChecked()" style=" max-width: 200px;">
+                        <option value="">All</option>
+                    </select>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+            <a href="">
+                <i class="fa fa-circle"></i> {{'Chemical Type' | translate}}
+                <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <select class="form-control" ng-model="rapexFilterFactory.chem" ng-options="key as key for (key,value) in chem" ng-change="rapexChecked()" style=" max-width: 200px;">
+                        <option value="">All</option>
+                    </select>
+                </li>
+            </ul>
+        </li>
     </ul>
 </section>
 <!-- /.sidebar -->
