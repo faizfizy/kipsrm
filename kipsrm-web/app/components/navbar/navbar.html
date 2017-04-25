@@ -60,6 +60,7 @@
                             </div>
                             <!-- Search input text  -->
                             <input class="form-control navbar-fat" type="text" placeholder="{{'search' | translate}}" ng-model="searchFactory.keyword" ng-model-options="{updateOn: 'submit'}">
+                            <span ng-show="searchFactory.keyword" ng-click="searchFactory.keyword = '';searchSubmit()" class="fa fa-times form-control-feedback" style="right:45px;pointer-events: auto;cursor: pointer;margin: 8px 0 0 0;"></span>
                             <span class="input-group-btn">
                                 <button class="btn btn-primary btn-navbar navbar-fat" type="submit"><i class="fa fa-search i-fat"></i></button>
                             </span>
