@@ -14,34 +14,25 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
     function wordClicked(word) {
         console.log(word);
         $rootScope.$broadcast('scanner-started', { word: word });
-        $window.location.assign('http://202.45.139.16/kipsrm-web/#!/recalls/rapex/records');
-
-        // $location.url('http://localhost:8080/#!/recalls/rapex/records/' + word.text);
+        $window.location.assign('http://localhost:8080/#!/recalls/rapex/records');
     }
 
     function wordClickedChem(word) {
         console.log(word);
         $rootScope.$broadcast('chem-started', { word: word });
-        $window.location.assign('http://202.45.139.16/kipsrm-web/#!/recalls/rapex/records');
-
-        // $location.url('http://localhost:8080/#!/recalls/rapex/records/' + word.text);
+        $window.location.assign('http://localhost:8080/#!/recalls/rapex/records');
     }
 
     $scope.$on('scanner-started', function(event, args) {
-        console.info(args);
         RapexFilterFactory.chem = [];
-
         RapexFilterFactory.euStandard = args.word.text;
-        // do what you want to do
     });
 
     $scope.$on('chem-started', function(event, args) {
-        console.info(args);
         RapexFilterFactory.euStandard = [];
-
         RapexFilterFactory.chem = args.word.text;
-        // do what you want to do
     });
+
     /*
     |--------------------------------------------------------------------------
     |
@@ -910,7 +901,6 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
             $scope.words = [];
             // Convert response to worList
             for (result in results) {
-                // console.info(result);
 
                 if (results.hasOwnProperty(result)) {
                     $scope.chemicalWordList.push({
@@ -918,7 +908,7 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
                         fontSize: (results[result] / 100) + "ex",
                         text: result
                     });
-                    $scope.words.push({ text: result, size: Math.log(results[result], 2) * 10 });
+                    $scope.words.push({ text: result, count: results[result], size: Math.log(results[result], 2) * 10 });
                 }
             }
             $scope.words = $scope.words.slice(min, max);
@@ -947,7 +937,7 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
                         fontSize: (results[result] / 100) + "ex",
                         text: result
                     });
-                    $scope.words2.push({ text: result, size: Math.log(results[result], 2) * 8 });
+                    $scope.words2.push({ text: result,  count: results[result],size: Math.log(results[result], 2) * 8 });
 
                 }
             }

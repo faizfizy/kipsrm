@@ -1,8 +1,85 @@
 /*global angular */
 var app = angular.module('chartsControllers', ['dataFactories', 'chart.js']);
 
-app.controller('ChartsController', ['$scope', '$location', 'DataFactory', function ($scope, $location, DataFactory) {
+app.controller('ChartsController', ['$rootScope', '$scope', '$location', 'DataFactory', 'NiteFilterFactory', '$window', function($rootScope, $scope, $location, DataFactory, NiteFilterFactory, $window) {
     'use strict';
+
+    $scope.onClickRegion = function(points, evt) {
+        if (points.length !== 0) {
+            NiteFilterFactory.niteRegionChecked = [];
+            $rootScope.$broadcast('region-clicked', { word: points["0"]._view.label });
+            $window.location.assign('http://localhost:8080/#!/incidents/nite/records');
+        }
+    }
+    $scope.$on('region-clicked', function(event, args) {
+        //find which index the word is in -rough fix-
+        var index;
+        if (args.word === '不明') {
+            index = 0;
+        }
+        if (args.word === '東京都') {
+            index = 1;
+        }
+        if (args.word === '大阪府') {
+            index = 2;
+        }
+        if (args.word === '神奈川県') {
+            index = 3;
+        }
+        if (args.word === '兵庫県') {
+            index = 4;
+        }
+        if (args.word === '埼玉県') {
+            index = 5;
+        }
+        if (args.word === '愛知県') {
+            index = 6;
+        }
+        if (args.word === '北海道') {
+            index = 7;
+        }
+        if (args.word === '千葉県') {
+            index = 8;
+        }
+        if (args.word === '福岡県') {
+            index = 9;
+        }
+        NiteFilterFactory.niteRegionChecked[index] = args.word;
+    });
+
+    $scope.onClickAge = function(points, evt) {
+        if (points.length !== 0) {
+            NiteFilterFactory.niteAgeChecked = [];
+            $rootScope.$broadcast('age-clicked', { word: points["0"]._view.label });
+            $window.location.assign('http://localhost:8080/#!/incidents/nite/records');
+
+        }
+
+    }
+
+    $scope.$on('age-clicked', function(event, args) {
+        //find which index the word is in -rough fix-
+        var index;
+        if (args.word === 'unknown') {
+            index = 0;
+        }
+        if (args.word === '> 10 years old') {
+            index = 1;
+        }
+        if (args.word === '1-3 years old') {
+            index = 2;
+        }
+        if (args.word === '4-5 years old') {
+            index = 3;
+        }
+        if (args.word === '0-1 year old') {
+            index = 4;
+        }
+        if (args.word === '6-10 years old') {
+            index = 5;
+        }
+        NiteFilterFactory.niteAgeChecked[index] = args.word;
+    });
 
     // Charts colour
     $scope.colors = ['#4D4D4D', '#5DA5DA', '#FAA43A', '#60BD68', '#F17CB0', '#B2912F', '#B276B2', '#DECF3F', '#F15854', '#00FF00'];
@@ -238,7 +315,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
     */
 
     // Host
-    DataFactory.getNite(niteAge).then(function (response) {
+    DataFactory.getNite(niteAge).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -255,7 +332,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteGender).then(function (response) {
+    DataFactory.getNite(niteGender).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -272,7 +349,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteRegion).then(function (response) {
+    DataFactory.getNite(niteRegion).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -291,7 +368,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
     });
 
     // Vector
-    DataFactory.getNite(niteProductName).then(function (response) {
+    DataFactory.getNite(niteProductName).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -308,7 +385,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteProductModel).then(function (response) {
+    DataFactory.getNite(niteProductModel).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -325,7 +402,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteProductManufacturer).then(function (response) {
+    DataFactory.getNite(niteProductManufacturer).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -344,7 +421,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
     });
 
     // Agent
-    DataFactory.getNite(niteHazard).then(function (response) {
+    DataFactory.getNite(niteHazard).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -361,7 +438,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteCauseCode).then(function (response) {
+    DataFactory.getNite(niteCauseCode).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -378,7 +455,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteMechanism).then(function (response) {
+    DataFactory.getNite(niteMechanism).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -395,7 +472,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteFireInvolvement).then(function (response) {
+    DataFactory.getNite(niteFireInvolvement).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -414,7 +491,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
     });
 
     // Environment
-    DataFactory.getNite(niteDate).then(function (response) {
+    DataFactory.getNite(niteDate).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -432,7 +509,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
         }
         $scope.dataDate = [$scope.dataDate]; // fix library RGB bug issue
     });
-    DataFactory.getNite(nitePlace).then(function (response) {
+    DataFactory.getNite(nitePlace).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -449,7 +526,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteActivity).then(function (response) {
+    DataFactory.getNite(niteActivity).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -466,7 +543,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteWeather).then(function (response) {
+    DataFactory.getNite(niteWeather).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -485,7 +562,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
     });
 
     // Consequences
-    DataFactory.getNite(niteDamageType).then(function (response) {
+    DataFactory.getNite(niteDamageType).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -502,7 +579,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteInjuredPart).then(function (response) {
+    DataFactory.getNite(niteInjuredPart).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -519,7 +596,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getNite(niteInjuryType).then(function (response) {
+    DataFactory.getNite(niteInjuryType).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -538,7 +615,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
     });
 
     // Other
-    DataFactory.getNite(niteMaterial).then(function (response) {
+    DataFactory.getNite(niteMaterial).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -557,7 +634,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
     });
 
     // RAPEX
-    DataFactory.getRapex(rapexCategory).then(function (response) {
+    DataFactory.getRapex(rapexCategory).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -574,7 +651,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getRapex(rapexNotifyingCountry).then(function (response) {
+    DataFactory.getRapex(rapexNotifyingCountry).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -591,7 +668,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getRapex(rapexOecd).then(function (response) {
+    DataFactory.getRapex(rapexOecd).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -608,7 +685,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getRapex(rapexOriginCountry).then(function (response) {
+    DataFactory.getRapex(rapexOriginCountry).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -625,7 +702,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getRapex(rapexProductType).then(function (response) {
+    DataFactory.getRapex(rapexProductType).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -642,7 +719,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getRapex(rapexProductsFound).then(function (response) {
+    DataFactory.getRapex(rapexProductsFound).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -659,7 +736,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getRapex(rapexRiskLevel).then(function (response) {
+    DataFactory.getRapex(rapexRiskLevel).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array
@@ -676,7 +753,7 @@ app.controller('ChartsController', ['$scope', '$location', 'DataFactory', functi
             }
         }
     });
-    DataFactory.getRapex(rapexRiskType).then(function (response) {
+    DataFactory.getRapex(rapexRiskType).then(function(response) {
         var results, result;
 
         // Initialize empty labels & data array

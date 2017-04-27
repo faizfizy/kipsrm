@@ -559,7 +559,7 @@
                 </li>
             </ul>
         </li>
-        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+        <li ng-class="{'treeview active': euStandardToggle }" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
                 <i class="fa fa-circle"></i> {{'Regulations Type' | translate}}
                 <span class="pull-right-container">
@@ -574,7 +574,7 @@
                 </li>
             </ul>
         </li>
-        <li class="treeview" ng-show="isActive('/recalls/rapex/records')">
+        <li ng-class="{'treeview active': chemToggle }" ng-show="isActive('/recalls/rapex/records')">
             <a href="">
                 <i class="fa fa-circle"></i> {{'Chemical Type' | translate}}
                 <span class="pull-right-container">

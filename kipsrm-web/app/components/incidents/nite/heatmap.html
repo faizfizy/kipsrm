@@ -9,7 +9,7 @@
             <a href="#!/incidents/nite/event" class="btn btn-primary btn-social-icon" title="Event"><i class="fa fa-calendar"></i></a>
             <a href="#!/incidents/nite/spider" class="btn btn-primary btn-social-icon" title="Spider"><i class="fa fa-bullseye"></i></a>
             <p></p>
-            <leaflet lf-center="selangor" geojson="geojson" geojson-nested="true" markers="markers" height="600px" width="100%" legend="legend" layers="layers"></leaflet>
+            <leaflet id="drawingMap"  lf-center="selangor" geojson="geojson" geojson-nested="true" markers="markers" event-broadcast="events" height="600px" width="100%" legend="legend" layers="layers"></leaflet>
             <h4 class="text-center">{{toDate[sliderVal]}}</h4>
             <hr>
             <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>

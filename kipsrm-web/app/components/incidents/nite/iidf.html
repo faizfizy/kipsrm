@@ -13,75 +13,77 @@
     </div>
     <div class="row text-center">
         <div class="col-md-10 col-md-offset-1">
-
             <div class="box box-solid" ng-show="showPane=='iidfHm'">
                 <div class="box-body">
-
                     <a ng-class="showPane=='iidfHm' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHm'">Hazard vs Motion</a>
                     <a ng-class="showPane=='iidfHo' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHo'">Hazard vs. Object</a>
                     <a ng-class="showPane=='iidfHmat' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmat'">Hazard vs. Material</a>
                     <a ng-class="showPane=='iidfHmec' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmec'">Hazard vs. Mechanism</a>
                     <a ng-class="showPane=='iidfHact' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHact'">Hazard vs. Activity</a>
                     <a ng-class="showPane=='iidfAnalysis' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfAnalysis'">Analysis</a>
-
                     <hr>
-
                     <div id="iidfHm">Loading...</div>
+                    <div class="row" ng-if="showHm">
+                        <div class="col-md-12">
+                            <!-- /.box-header -->
+                            <div id="table-wrapper">
+                                <div id="table-scroll">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Motion</strong></td>
+                                                <td><strong>Incident</strong></td>
+                                            </tr>
+                                            <tr ng-repeat="result in res">
+                                                <td>{{result}}</td>
+                                                <td>{{result}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <div class="box box-solid" ng-show="showPane=='iidfHo'">
                 <div class="box-body">
-
                     <a ng-class="showPane=='iidfHm' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHm'">Hazard vs Motion</a>
                     <a ng-class="showPane=='iidfHo' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHo'">Hazard vs. Object</a>
                     <a ng-class="showPane=='iidfHmat' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmat'">Hazard vs. Material</a>
                     <a ng-class="showPane=='iidfHmec' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmec'">Hazard vs. Mechanism</a>
                     <a ng-class="showPane=='iidfHact' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHact'">Hazard vs. Activity</a>
                     <a ng-class="showPane=='iidfAnalysis' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfAnalysis'">Analysis</a>
-
                     <hr>
-
                     <div id="iidfHo" style="height: 1000px;">Loading...</div>
                 </div>
             </div>
-
             <div class="box box-solid" ng-show="showPane=='iidfHmat'">
                 <div class="box-body">
-
                     <a ng-class="showPane=='iidfHm' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHm'">Hazard vs Motion</a>
                     <a ng-class="showPane=='iidfHo' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHo'">Hazard vs. Object</a>
                     <a ng-class="showPane=='iidfHmat' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmat'">Hazard vs. Material</a>
                     <a ng-class="showPane=='iidfHmec' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmec'">Hazard vs. Mechanism</a>
                     <a ng-class="showPane=='iidfHact' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHact'">Hazard vs. Activity</a>
                     <a ng-class="showPane=='iidfAnalysis' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfAnalysis'">Analysis</a>
-
                     <hr>
-
                     <div id="iidfHmat">Loading...</div>
                 </div>
             </div>
-
             <div class="box box-solid" ng-show="showPane=='iidfHmec'">
                 <div class="box-body">
-
                     <a ng-class="showPane=='iidfHm' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHm'">Hazard vs Motion</a>
                     <a ng-class="showPane=='iidfHo' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHo'">Hazard vs. Object</a>
                     <a ng-class="showPane=='iidfHmat' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmat'">Hazard vs. Material</a>
                     <a ng-class="showPane=='iidfHmec' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmec'">Hazard vs. Mechanism</a>
                     <a ng-class="showPane=='iidfHact' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHact'">Hazard vs. Activity</a>
                     <a ng-class="showPane=='iidfAnalysis' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfAnalysis'">Analysis</a>
-
                     <hr>
-
-
                     <div id="iidfHmec">Loading...</div>
                 </div>
             </div>
-
             <div class="box box-solid" ng-show="showPane=='iidfHact'">
                 <div class="box-body">
-
                     <a ng-class="showPane=='iidfHm' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHm'">Hazard vs Motion</a>
                     <a ng-class="showPane=='iidfHo' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHo'">Hazard vs. Object</a>
                     <a ng-class="showPane=='iidfHmat' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmat'">Hazard vs. Material</a>
@@ -89,35 +91,24 @@
                     <a ng-class="showPane=='iidfHact' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHact'">Hazard vs. Activity</a>
                     <a ng-class="showPane=='iidfAnalysis' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfAnalysis'">Analysis</a>
                     <hr>
-
-
                     <div id="iidfHact">Loading...</div>
                 </div>
             </div>
-
             <div class="box box-solid" ng-show="showPane=='iidfAnalysis'">
                 <div class="box-body">
-
                     <a ng-class="showPane=='iidfHm' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHm'">Hazard vs Motion</a>
                     <a ng-class="showPane=='iidfHo' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHo'">Hazard vs. Object</a>
                     <a ng-class="showPane=='iidfHmat' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmat'">Hazard vs. Material</a>
                     <a ng-class="showPane=='iidfHmec' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHmec'">Hazard vs. Mechanism</a>
                     <a ng-class="showPane=='iidfHact' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfHact'">Hazard vs. Activity</a>
                     <a ng-class="showPane=='iidfAnalysis' ? 'btn-bitbucket' : btn-primary" class="btn btn-primary" ng-click="showPane='iidfAnalysis'">Analysis</a>
-
                     <hr>
-
                     <div class="col-md-12" style="content:url(kipsrm-web/assets/img/iidf_analysis/1.png);"></div>
-
                     <br>
-
                     <div class="col-md-12" style="content:url(kipsrm-web/assets/img/iidf_analysis/2.jpg);"></div>
-
                     <br>
-
                     <div class="col-md-12" style="content:url(kipsrm-web/assets/img/iidf_analysis/3.png);"></div>
                 </div>
-
             </div>
         </div>
     </div>

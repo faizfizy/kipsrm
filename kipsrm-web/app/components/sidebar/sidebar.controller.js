@@ -119,12 +119,25 @@ app.controller('SidebarController', ['$scope', '$location', '$rootScope', 'NiteF
     RapexFilterFactory.getRapexRiskType().then(function(response) {
         $scope.rapexRiskType = response.data.aggregations.result;
     });
+
+    $scope.euStandardToggle = false;
+    $scope.chemToggle = false;
+    $scope.$on('scanner-started', function(event, args) {
+        $scope.euStandardToggle = true;
+        $scope.chemToggle = false;
+
+    });
+
+    $scope.$on('chem-started', function(event, args) {
+        $scope.chemToggle = true;
+        $scope.euStandardToggle = false;
+
+    });
+
     RapexFilterFactory.getEuStandard().then(function(response) {
-        console.info(response);
         $scope.euStandard = response.data.aggregations.result;
     });
-      RapexFilterFactory.getChem().then(function(response) {
-        console.info(response);
+    RapexFilterFactory.getChem().then(function(response) {
         $scope.chem = response.data.aggregations.result;
     });
     $scope.rapexChecked = function() {
