@@ -937,7 +937,7 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
                         fontSize: (results[result] / 100) + "ex",
                         text: result
                     });
-                    $scope.words2.push({ text: result,  count: results[result],size: Math.log(results[result], 2) * 6 });
+                    $scope.words2.push({ text: result,  count: results[result],size: Math.log(results[result], 2) * 5 });
 
                 }
             }
