@@ -908,7 +908,7 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
                         fontSize: (results[result] / 100) + "ex",
                         text: result
                     });
-                    $scope.words.push({ text: result, count: results[result], size: Math.log(results[result], 2) * 10 });
+                    $scope.words.push({ text: result, count: results[result], size: Math.log(results[result], 2) * 8 });
                 }
             }
             $scope.words = $scope.words.slice(min, max);
@@ -937,7 +937,7 @@ app.controller('RecallsRapexController', ['$rootScope', '$scope', '$location', '
                         fontSize: (results[result] / 100) + "ex",
                         text: result
                     });
-                    $scope.words2.push({ text: result,  count: results[result],size: Math.log(results[result], 2) * 8 });
+                    $scope.words2.push({ text: result,  count: results[result],size: Math.log(results[result], 2) * 6 });
 
                 }
             }

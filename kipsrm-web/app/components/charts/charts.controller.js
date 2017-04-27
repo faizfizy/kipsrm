@@ -6,8 +6,8 @@ app.controller('ChartsController', ['$rootScope', '$scope', '$location', 'DataFa
 
     $scope.onClickRegion = function(points, evt) {
         if (points.length !== 0) {
-            NiteFilterFactory.niteAgeChecked = [];
-            NiteFilterFactory.niteRegionChecked = [];
+            NiteFilterFactory.resetFilter();
+            // NiteFilterFactory.niteRegionChecked = [];
             $rootScope.$broadcast('region-clicked', { word: points["0"]._view.label });
             $window.location.assign('http://202.45.139.16/kipsrm-web/#!/incidents/nite/records');
         }
@@ -45,16 +45,16 @@ app.controller('ChartsController', ['$rootScope', '$scope', '$location', 'DataFa
         if (args.word === '福岡県') {
             index = 9;
         }
-        NiteFilterFactory.niteAgeChecked = [];
         NiteFilterFactory.niteRegionChecked[index] = args.word;
     });
 
     $scope.onClickAge = function(points, evt) {
         if (points.length !== 0) {
-            NiteFilterFactory.niteAgeChecked = [];
-            NiteFilterFactory.niteRegionChecked = [];
+                      NiteFilterFactory.resetFilter();
+
 
             $rootScope.$broadcast('age-clicked', { word: points["0"]._view.label });
+            //http://202.45.139.16/kipsrm-web/#!/incidents/nite/records
             $window.location.assign('http://202.45.139.16/kipsrm-web/#!/incidents/nite/records');
 
         }
