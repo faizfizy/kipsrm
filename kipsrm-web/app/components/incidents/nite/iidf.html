@@ -11,6 +11,8 @@
             <p></p>
         </div>
     </div>
+    
+    {{passtest}}
 
     <div class="row text-center">
         <div class="col-md-12">
@@ -92,44 +94,46 @@
             </div>
         </div>
     </div>
-    <!--
-    <div class="box box-solid box-primary">
+    
+    <!-- {{iidfRecords.stats}} -->
+    
+    <div class="box box-solid box-primary" ng-if="iidfRecords.data[0].hazard1">
         <div class="box-solid">
             <div class="box-header with-border">
                 <h3 class="box-title">
-                    Hazard: <strong>xxx</strong><br>
-                    Label: <strong>xxx</strong>
+                    
+                    Hazard: <strong>{{iidfRecords.data[0].hazard1}}</strong><br>
+                    Motion: <strong>{{iidfRecords.data[0].victim_motion}}</strong>
                 </h3>
                 <div class="text-muted">
-                    {{ page === 1 ? "" : "Page " + page + " of "}} <b>{{ nite.stats.hits }}</b> {{'results' | translate}} ({{ nite.stats.tookMillis/100 }} seconds)
+                    <b>{{ iidfRecords.stats.hits }}</b> {{'results' | translate}} ({{ iidfRecords.stats.tookMillis/100 }} seconds)
                 </div>
             </div>
             <div class="box-body table-responsive no-padding">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>{{'annual_number' | translate}}</th>
-                            <th>{{'incident_date' | translate}}</th>
-                            <th>{{'incident_cause' | translate}}</th>
-                            <th>{{'prevention' | translate}}</th>
-                            <th>IIDF</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Academic Background</th>
+                            <th>Culture Background</th>
+                            <th>Race</th>
+                            <th>Location</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in nite.data">
-                            <td>
-                                <a href="" data-toggle="modal" data-target="#niteModal" ng-click="displayDetailsNite(item.annual_number)">{{item.annual_number}}
-                                        </a>
-                            </td>
-                            <td>{{item.incident_date | date:'medium'}}</td>
-                            <td>({{item.incident_cause_code}}) - {{item.incident_cause}}</td>
-                            <td>{{item.prevention}}</td>
-                            <td><span class="text-muted"><i>IIDF</i></span></td>
+                        <tr ng-repeat="item in iidfRecords.data">
+                            <td>{{item.age}}</td>
+                            <td>{{item.gender}}</td>
+                            <td>({{item.academic_bg}}</td>
+                            <td>{{item.culture_bg}}</td>
+                            <td>{{item.race}}</td>
+                            <td>{{item.location}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    -->
+    
 </section>

@@ -11,6 +11,7 @@ app.factory('DataFactory', ['$http', 'CONSTANT', function ($http, CONSTANT) {
         urlIidfHmat = CONSTANT.BASE_URL_IIDF + "hmat", // Hazard vs Material
         urlIidfHmec = CONSTANT.BASE_URL_IIDF + "hmec", // Hazard vs Mechanism
         urlIidfHact = CONSTANT.BASE_URL_IIDF + "hact", // Hazard vs Activity
+        urlIidfRecords = CONSTANT.BASE_URL_IIDF + "records",
         header = {
             headers: {
                 'REMOTE_USER': 'AABBCC112233'
@@ -46,6 +47,10 @@ app.factory('DataFactory', ['$http', 'CONSTANT', function ($http, CONSTANT) {
     
     dataFactory.getIidfHact = function () {
         return $http.get(urlIidfHact);
+    }
+    
+    dataFactory.getIidfRecords = function (body) {
+        return $http.post(urlIidfRecords, body);
     }
 
     return dataFactory;
