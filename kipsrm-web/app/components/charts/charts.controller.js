@@ -8,7 +8,7 @@ app.controller('ChartsController', ['$rootScope', '$scope', '$location', 'DataFa
         if (points.length !== 0) {
             NiteFilterFactory.niteRegionChecked = [];
             $rootScope.$broadcast('region-clicked', { word: points["0"]._view.label });
-            $window.location.assign('http://localhost:8080/#!/incidents/nite/records');
+            $window.location.assign('http://202.45.139.16/kipsrm-web/#!/incidents/nite/records');
         }
     }
     $scope.$on('region-clicked', function(event, args) {
@@ -51,7 +51,7 @@ app.controller('ChartsController', ['$rootScope', '$scope', '$location', 'DataFa
         if (points.length !== 0) {
             NiteFilterFactory.niteAgeChecked = [];
             $rootScope.$broadcast('age-clicked', { word: points["0"]._view.label });
-            $window.location.assign('http://localhost:8080/#!/incidents/nite/records');
+            $window.location.assign('http://202.45.139.16/kipsrm-web/#!/incidents/nite/records');
 
         }
 
