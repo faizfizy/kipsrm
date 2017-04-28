@@ -97,13 +97,59 @@
 
     <!-- {{iidfRecords.stats}} -->
 
-    <div class="box box-solid box-primary" ng-show="iidfRecords.stats.count && showPane=='iidfHm'">
+    <div class="box box-solid box-primary" ng-show="iidfRecordsType == 'hm' && showPane == 'iidfHm'">
         <div class="box-solid">
             <div class="box-header with-border">
                 <h3 class="box-title">
                     
                     Hazard: <strong>{{xValue}}</strong><br>
                     Motion: <strong>{{yValue}}</strong>
+                </h3>
+                <div class="text-muted">
+                    <b>{{ iidfRecords.stats.hits }}</b> records ({{ iidfRecords.stats.tookMillis/100 }} seconds)
+                </div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <thead ng-show="iidfRecords.stats.hits">
+                        <tr>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Academic Background</th>
+                            <th>Culture Background</th>
+                            <th>Race</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-hide="iidfRecords.stats.hits">
+                        <th>
+                            <p class="alert alert-danger text-center" style="margin: 0 0 0 0;">
+                                <b>No records</b>
+                            </p>
+                        </th>
+                    </tbody>
+                    <tbody>
+                        <tr ng-repeat="item in iidfRecords.data">
+                            <td>{{item.age}}</td>
+                            <td>{{item.gender}}</td>
+                            <td>({{item.academic_bg}}</td>
+                            <td>{{item.culture_bg}}</td>
+                            <td>{{item.race}}</td>
+                            <td>{{item.location}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="box box-solid box-primary" ng-show="iidfRecordsType == 'ho' && showPane == 'iidfHo'">
+        <div class="box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">
+                    
+                    Hazard: <strong>{{xValue}}</strong><br>
+                    Object: <strong>{{yValue}}</strong>
                 </h3>
                 <div class="text-muted">
                     <b>{{ iidfRecords.stats.hits }}</b> records ({{ iidfRecords.stats.tookMillis/100 }} seconds)
