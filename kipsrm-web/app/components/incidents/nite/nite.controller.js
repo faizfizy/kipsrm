@@ -1247,8 +1247,6 @@ app.controller('IncidentsNiteController', ['$scope', '$location', 'DataFactory',
         "福岡県": 340
     };
 
-
-
     function getColor(d) {
         return d > 700 ? '#800026' :
             d > 600 ? '#BD0026' :
