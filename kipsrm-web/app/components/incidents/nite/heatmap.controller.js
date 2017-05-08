@@ -277,9 +277,7 @@ app.controller('HeatmapController', ['$scope', '$http', '$timeout', '$uibModal',
         		stepsArray: keys,
         		onChange: function() { $scope.myChangeListener() }
         	}
-        };
-
-    });
+        };});
 
 			var body = {
 				"filters": {
@@ -311,10 +309,8 @@ app.controller('HeatmapController', ['$scope', '$http', '$timeout', '$uibModal',
                    render($scope.slider.value);
                    neutralizeHandler();
                }, 800);
-				}
-
+			}
 			};
-
 		}
 		$scope.lastupdatedvalue = "2007-10";
 		render("2007-10");
